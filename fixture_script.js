@@ -1,22 +1,3 @@
-const escudosMapping = {
-    "9 DE JULIO (RIO TERCERO)": "escudos/9dejulio.png",
-    "ATL. ASCASUBI": "escudos/ascasubi.png",
-    "ATL. ALMAFUERTE": "escudos/atlalmafuerte.png",
-    "BELGRANO (BERROTARAN)": "escudos/bfc.png",
-    "ATL. RIO TERCERO": "escudos/cart.png",
-    "DEP. INDEPENDIENTE": "escudos/depindependiente.png",
-    "REC. ELENENSE": "escudos/elenense.png",
-    "ESTUDIANTES (HERNANDO)": "escudos/estudianteshndo.png",
-    "DEPORTIVO ITALIANO": "escudos/italiano.png",
-    "NAUTICO RUMIPAL": "escudos/rumipal.png",
-    "SP. BELGRANO": "escudos/spbelgrano.png",
-    "TALLERES (BERROTARAN)": "escudos/talleres.png",
-    "VECINOS UNIDOS": "escudos/vecinos.png",
-    "VILLA GENERAL BELGRANO": "escudos/vgb.png",
-    "ATL. INDEPENDIENTE": "escudos/cai.png",
-    "JUVENTUD AGRARIO": "escudos/corralito.png",
-};
-
 
 // Render fixture
 function renderFixture() {
