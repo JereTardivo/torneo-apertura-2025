@@ -1,22 +1,56 @@
-# Torneo Apertura 2025 - Liga Regional Riotercerense de Fútbol
 
-Sitio web para mostrar el fixture y la tabla de posiciones del Torneo Apertura 2025 de la Liga Regional Riotercerense de Fútbol.
+# Fixture y Tabla de Posiciones - Apertura 2025 LRRF
 
-## Funcionalidades
+Este proyecto es una página web responsive que muestra el fixture completo y la tabla de posiciones en tiempo real del Torneo Apertura 2025 de la **Liga Regional Riotercerense de Fútbol (LRRF)**.
 
-- Fixture completo (Fechas 1 a 16)
-- Resultados editables en Fechas 14, 15 y 16
-- Tabla de posiciones actualizada automáticamente
-- Compatible con celulares y PC
-- Modo Noche ON/OFF
-- Botón para imprimir la tabla de posiciones
-- Botón para resetear Fechas 14-16
+## Características
+
+✅ Fixture de las 16 fechas
+- Fechas 1 a 13 con resultados fijos (no editables).
+- Fechas 14, 15 y 16 editables.
+
+✅ Tabla de posiciones
+- Se actualiza automáticamente al ingresar los resultados de las fechas faltantes.
+- No cuenta partidos no jugados (campos vacíos).
+
+✅ Guardado automático
+- Los resultados ingresados se guardan en **localStorage** → permanecen al recargar la página.
+
+✅ Botón "Limpiar resultados"
+- Permite borrar los resultados de las fechas 14-15-16 y limpiar el `localStorage`.
+
+✅ Diseño responsive
+- Compatible con escritorio, tablet y celular.
+- Estilo moderno en azul y blanco + logo oficial de la liga.
 
 ## Uso
 
-Accedé al sitio desde:  
-👉 [https://jeretardivo.github.io/torneo-apertura-2025/](https://jeretardivo.github.io/torneo-apertura-2025/) *(cuando esté publicado)*
+1. Descomprimir el ZIP.
+2. Subir los archivos a GitHub Pages o un servidor web.
+3. Asegurarse que `fixture_tabla_apertura2025.html` sea la página principal (`index.html` si se desea).
 
-## Créditos
+## Archivos
 
-Desarrollado para uso en el torneo por **jeretardivo** ⚽
+- `fixture_tabla_apertura2025.html` → Página principal.
+- `fixture_script.js` → Lógica JS para actualización de tabla, guardado y limpieza.
+- `lrrf_logo.png` → Logo oficial de la liga.
+- `README.md` → Este archivo.
+
+## Changelog
+
+### v1
+- Primera versión funcional con fixture + tabla de posiciones dinámica.
+
+### v2
+- Corrección de encabezados en fixture.
+- Sincronización automática: si un campo se completa, el otro no puede quedar vacío.
+
+### v3
+- Agregado logo oficial de la liga en la cabecera.
+- Botón "Limpiar resultados" agregado al final del fixture.
+- Guardado de resultados en localStorage.
+- Carga automática desde localStorage al iniciar.
+
+---
+
+_Hecho con ❤️ para la comunidad de la LRRF._
