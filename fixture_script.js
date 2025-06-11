@@ -1,3 +1,22 @@
+const escudosMapping = {
+    "9 DE JULIO (RIO TERCERO)": "escudos/9dejulio.png",
+    "ATL. ASCASUBI": "escudos/ascasubi.png",
+    "ATL. ALMAFUERTE": "escudos/atlalmafuerte.png",
+    "BELGRANO (BERROTARAN)": "escudos/bfc.png",
+    "ATL. RIO TERCERO": "escudos/cart.png",
+    "DEP. INDEPENDIENTE": "escudos/depindependiente.png",
+    "REC. ELENENSE": "escudos/elenense.png",
+    "ESTUDIANTES (HERNANDO)": "escudos/estudianteshndo.png",
+    "DEPORTIVO ITALIANO": "escudos/italiano.png",
+    "NAUTICO RUMIPAL": "escudos/rumipal.png",
+    "SP. BELGRANO": "escudos/spbelgrano.png",
+    "TALLERES (BERROTARAN)": "escudos/talleres.png",
+    "VECINOS UNIDOS": "escudos/vecinos.png",
+    "VILLA GENERAL BELGRANO": "escudos/vgb.png",
+    "ATL. INDEPENDIENTE": "escudos/cai.png",
+    "JUVENTUD AGRARIO": "escudos/corralito.png",
+};
+
 
 // Render fixture
 function renderFixture() {
@@ -22,10 +41,10 @@ function renderFixture() {
             <tbody>
                 ${fixtureFijas[fecha].map(partido => `
                     <tr>
-                        <td>${partido['Local']}</td>
+                        <td>${escudosMapping[partido['Local']] ? `<img src="${escudosMapping[partido['Local']]}" class="escudo"/>` : ''} ${partido['Local']}</td>
                         <td>${partido['Goles Local']}</td>
                         <td>${partido['Goles Visitante']}</td>
-                        <td>${partido['Visitante']}</td>
+                        <td>${escudosMapping[partido['Visitante']] ? `<img src="${escudosMapping[partido['Visitante']]}" class="escudo"/>` : ''} ${partido['Visitante']}</td>
                     </tr>
                 `).join('')}
             </tbody>
@@ -52,10 +71,10 @@ function renderFixture() {
             <tbody>
                 ${fixtureEditables[fecha].map((partido, idx) => `
                     <tr>
-                        <td>${partido['Local']}</td>
+                        <td>${escudosMapping[partido['Local']] ? `<img src="${escudosMapping[partido['Local']]}" class="escudo"/>` : ''} ${partido['Local']}</td>
                         <td><input type="number" min="0" pattern="[0-9]*" inputmode="numeric" class="editable-input border" data-fecha="${fecha}" data-idx="${idx}" data-team="local" value="${(resultados[fecha]?.[idx]?.local ?? '')}" onchange="updateResultado(event)" /></td>
                         <td><input type="number" min="0" pattern="[0-9]*" inputmode="numeric" class="editable-input border" data-fecha="${fecha}" data-idx="${idx}" data-team="visitante" value="${(resultados[fecha]?.[idx]?.visitante ?? '')}" onchange="updateResultado(event)" /></td>
-                        <td>${partido['Visitante']}</td>
+                        <td>${escudosMapping[partido['Visitante']] ? `<img src="${escudosMapping[partido['Visitante']]}" class="escudo"/>` : ''} ${partido['Visitante']}</td>
                     </tr>
                 `).join('')}
             </tbody>
@@ -65,26 +84,23 @@ function renderFixture() {
     }
 }
 
-// Actualizar resultado
 function updateResultado(event) {
     const input = event.target;
     const fecha = input.dataset.fecha;
     const idx = input.dataset.idx;
     const team = input.dataset.team;
 
-    // Validación estricta
     let value = parseInt(input.value);
     if (isNaN(value) || value < 0) {
         value = 0;
         input.value = value;
     }
 
-    if (!resultados[fecha]) resultados[fecha] = {};
-    if (!resultados[fecha][idx]) resultados[fecha][idx] = {'local': null, 'visitante': null};
+    if (!resultados[fecha]) resultados[fecha] = {}
+    if (!resultados[fecha][idx]) resultados[fecha][idx] = {local: null, visitante: null};
 
     resultados[fecha][idx][team] = value;
 
-    // Sincronizar campo opuesto si está vacío (poner 0)
     const fila = input.closest('tr');
     const otroCampo = fila.querySelector(`input[data-team="${team === 'local' ? 'visitante' : 'local'}"]`);
     if (otroCampo.value === '') {
@@ -92,37 +108,32 @@ function updateResultado(event) {
         resultados[fecha][idx][team === 'local' ? 'visitante' : 'local'] = 0;
     }
 
-    // Guardar en localStorage
     localStorage.setItem('resultados_fixture', JSON.stringify(resultados));
 
     calcularTabla();
 }
 
-// Limpiar resultados
 function limpiarResultados() {
     if (confirm('¿Estás seguro de que deseas limpiar los resultados? Esta acción no se puede deshacer.')) {
-        resultados = {};
+        resultados = {}
         localStorage.removeItem('resultados_fixture');
         renderFixture();
         calcularTabla();
     }
 }
 
-// Calcular tabla
 function calcularTabla() {
-    const tabla = {};
+    const tabla = {}
     equipos.forEach(e => {
-        tabla[e] = { Pts:0, J:0, G:0, E:0, P:0, GF:0, GC:0 };
+        tabla[e] = {Pts:0, J:0, G:0, E:0, P:0, GF:0, GC:0};
     });
 
-    // Fechas fijas
     for (const fecha in fixtureFijas) {
         fixtureFijas[fecha].forEach(partido => {
             procesarPartido(tabla, partido['Local'], partido['Visitante'], parseInt(partido['Goles Local']), parseInt(partido['Goles Visitante']));
         });
     }
 
-    // Fechas editables
     for (const fecha in fixtureEditables) {
         fixtureEditables[fecha].forEach((partido, idx) => {
             const res = resultados[fecha]?.[idx];
@@ -135,7 +146,6 @@ function calcularTabla() {
     renderTabla(tabla);
 }
 
-// Procesar un partido
 function procesarPartido(tabla, local, visitante, golesLocal, golesVisitante) {
     tabla[local].J +=1;
     tabla[visitante].J +=1;
@@ -160,7 +170,6 @@ function procesarPartido(tabla, local, visitante, golesLocal, golesVisitante) {
     }
 }
 
-// Render tabla
 function renderTabla(tabla) {
     const body = document.getElementById('tabla-body');
     body.innerHTML = '';
@@ -171,7 +180,7 @@ function renderTabla(tabla) {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${idx+1}</td>
-            <td>${equipo}</td>
+            <td>${escudosMapping[equipo] ? `<img src="${escudosMapping[equipo]}" class="escudo-tabla"/>` : ''} ${equipo}</td>
             <td>${stats.Pts}</td>
             <td>${stats.J}</td>
             <td>${stats.G}</td>
@@ -185,6 +194,5 @@ function renderTabla(tabla) {
     });
 }
 
-// Inicializar
 renderFixture();
 calcularTabla();
