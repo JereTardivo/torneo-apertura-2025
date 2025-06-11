@@ -53,8 +53,8 @@ function renderFixture() {
                 ${fixtureEditables[fecha].map((partido, idx) => `
                     <tr>
                         <td>${partido['Local']}</td>
-                        <td><input type="number" min="0" class="editable-input border" data-fecha="${fecha}" data-idx="${idx}" data-team="local" value="${(resultados[fecha]?.[idx]?.local ?? '')}" onchange="updateResultado(event)" /></td>
-                        <td><input type="number" min="0" class="editable-input border" data-fecha="${fecha}" data-idx="${idx}" data-team="visitante" value="${(resultados[fecha]?.[idx]?.visitante ?? '')}" onchange="updateResultado(event)" /></td>
+                        <td><input type="number" min="0" pattern="[0-9]*" inputmode="numeric" class="editable-input border" data-fecha="${fecha}" data-idx="${idx}" data-team="local" value="${(resultados[fecha]?.[idx]?.local ?? '')}" onchange="updateResultado(event)" /></td>
+                        <td><input type="number" min="0" pattern="[0-9]*" inputmode="numeric" class="editable-input border" data-fecha="${fecha}" data-idx="${idx}" data-team="visitante" value="${(resultados[fecha]?.[idx]?.visitante ?? '')}" onchange="updateResultado(event)" /></td>
                         <td>${partido['Visitante']}</td>
                     </tr>
                 `).join('')}
@@ -71,7 +71,13 @@ function updateResultado(event) {
     const fecha = input.dataset.fecha;
     const idx = input.dataset.idx;
     const team = input.dataset.team;
-    const value = parseInt(input.value) >= 0 ? parseInt(input.value) : 0;
+
+    // Validación estricta
+    let value = parseInt(input.value);
+    if (isNaN(value) || value < 0) {
+        value = 0;
+        input.value = value;
+    }
 
     if (!resultados[fecha]) resultados[fecha] = {};
     if (!resultados[fecha][idx]) resultados[fecha][idx] = {'local': null, 'visitante': null};
@@ -94,10 +100,12 @@ function updateResultado(event) {
 
 // Limpiar resultados
 function limpiarResultados() {
-    resultados = {};
-    localStorage.removeItem('resultados_fixture');
-    renderFixture();
-    calcularTabla();
+    if (confirm('¿Estás seguro de que deseas limpiar los resultados? Esta acción no se puede deshacer.')) {
+        resultados = {};
+        localStorage.removeItem('resultados_fixture');
+        renderFixture();
+        calcularTabla();
+    }
 }
 
 // Calcular tabla
