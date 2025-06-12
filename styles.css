@@ -102,3 +102,9 @@ body {
             /* Celeste */
             color: #000;
         }
+
+/* Para inputs de resultados (type="text") */
+input[type="text"] {
+    background: #fff;
+    color: #000;
+}
