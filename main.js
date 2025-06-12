@@ -1,3 +1,5 @@
+console.log("MAIN FINAL V5 CARGADO");
+
 function nombreAArchivo(nombre) {
                 return "escudos/" + nombre
                     .replaceAll("(", "")
