@@ -108,3 +108,11 @@ body {
 input[type="number"] {
     color: black !important;
 }
+
+
+
+/* === Forzar color inputs number === */
+input[type="number"] {
+    color: black !important;
+    background-color: white !important;
+}
