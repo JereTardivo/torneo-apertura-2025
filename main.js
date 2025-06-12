@@ -908,6 +908,7 @@ const fechasFijas = {
                     const fila = filas[index];
                     if (fila) {
                         const inputs = fila.querySelectorAll("input[type='number']");
+                        if (inputs.length >= 2) {
                         if (equipo === "local") {
                             inputs[0].value = valor;
                         } else {
@@ -915,6 +916,7 @@ const fechasFijas = {
                         }
                     }
                 }
+                        }
             });
         }
 

@@ -104,7 +104,7 @@ body {
         }
 
 
-/* === Force match input text color === */
-.fixture input[type="number"] {
+/* === Force ALL number inputs to have black text === */
+input[type="number"] {
     color: black !important;
 }
