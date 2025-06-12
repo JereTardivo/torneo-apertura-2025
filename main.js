@@ -907,7 +907,7 @@ const fechasFijas = {
                     const filas = card.querySelectorAll("tbody tr");
                     const fila = filas[index];
                     if (fila) {
-                        const inputs = fila.querySelectorAll("input[type='number']");
+                        const inputs = fila.querySelectorAll("input[type='text'][inputmode='numeric']");
                         if (equipo === "local") {
                             inputs[0].value = valor;
                         } else {
