@@ -1,5 +1,3 @@
-console.log("MAIN FINAL V5 CARGADO");
-
 function nombreAArchivo(nombre) {
                 return "escudos/" + nombre
                     .replaceAll("(", "")
@@ -868,11 +866,11 @@ const fechasFijas = {
                     card.innerHTML += `
                     <div class="match flex justify-between items-center">
                         <span class="text-sm md:text-base truncate">${partido.local}</span>
-                        <input type="text" inputmode="numeric" pattern="[0-9]*" min="0" oninput="this.value = this.value.replace(/[^0-9]/g, \'\');" value="${partido.goles_local === "" ? "" : partido.goles_local}" 
-                            onchange=\"updateResultado('${fechaNombre}', ${index}, 'local', this.value)\">
+                        <input type="text" inputmode="numeric" pattern="[0-9]*" min="0" value="${partido.goles_local === "" ? "" : partido.goles_local}" 
+                            onchange="updateResultado('${fecha}', ${index}, 'local', this.value)">
                         <span class="font-bold text-lg">-</span>
-                        <input type="text" inputmode="numeric" pattern="[0-9]*" min="0" oninput="this.value = this.value.replace(/[^0-9]/g, \'\');" value="${partido.goles_visitante === "" ? "" : partido.goles_visitante}" 
-                            onchange=\"updateResultado('${fechaNombre}', ${index}, 'visitante', this.value)\">
+                        <input type="text" inputmode="numeric" pattern="[0-9]*" min="0" value="${partido.goles_visitante === "" ? "" : partido.goles_visitante}" 
+                            onchange="updateResultado('${fecha}', ${index}, 'visitante', this.value)">
                         <span class="text-sm md:text-base truncate">${partido.visitante}</span>
                     </div>`;
                 });
@@ -958,42 +956,18 @@ const fechasFijas = {
                 partidosFiltrados.forEach((partido, index) => {
                     let resultadoHTML = "";
 
-                    
-if (editable) {
-resultadoHTML = `
-<input type="text" inputmode="numeric" pattern="[0-9]*" min="0"
-    oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-    value='${partido.goles_local === "" ? "" : partido.goles_local}'
-    onchange="updateResultado('${fecha}', ${index}, 'local', this.value)"
-    class="w-10 md:w-12 text-center bg-white text-black">
--
-<input type="text" inputmode="numeric" pattern="[0-9]*" min="0"
-    oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-    value='${partido.goles_visitante === "" ? "" : partido.goles_visitante}'
-    onchange="updateResultado('${fecha}', ${index}, 'visitante', this.value)"
-    class="w-10 md:w-12 text-center bg-white text-black">`;
-
-
-
-} else {
-    
-resultadoHTML = `
-<input type="text" inputmode="numeric" pattern="[0-9]*" min="0"
-    oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-    value='${partido.goles_local === "" ? "" : partido.goles_local}'
-    onchange="updateResultado('${fecha}', ${index}, 'local', this.value)"
-    class="w-10 md:w-12 text-center bg-white text-black">
--
-<input type="text" inputmode="numeric" pattern="[0-9]*" min="0"
-    oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-    value='${partido.goles_visitante === "" ? "" : partido.goles_visitante}'
-    onchange="updateResultado('${fecha}', ${index}, 'visitante', this.value)"
-    class="w-10 md:w-12 text-center bg-white text-black">`;
-
-
-
-}
-
+                    if (editable) {
+                        resultadoHTML = `
+                    <input type="text" inputmode="numeric" pattern="[0-9]*" min="0" value="${partido.goles_local === "" ? "" : partido.goles_local}" 
+                        onchange="updateResultado('${fechaNombre}', ${index}, 'local', this.value)"
+                        style="width: 40px; text-align: center;"> 
+                    - 
+                    <input type="text" inputmode="numeric" pattern="[0-9]*" min="0" value="${partido.goles_visitante === "" ? "" : partido.goles_visitante}" 
+                        onchange="updateResultado('${fechaNombre}', ${index}, 'visitante', this.value)"
+                        style="width: 40px; text-align: center;">`;
+                    } else {
+                        resultadoHTML = `<span class="font-bold text-base">${partido.goles_local} - ${partido.goles_visitante}</span>`;
+                    }
 
                     tableHTML += `
                 <tr>
