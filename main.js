@@ -960,7 +960,6 @@ const fechasFijas = {
 
                     
 if (editable) {
-    
 resultadoHTML = `
 <input type="text" inputmode="numeric" pattern="[0-9]*" min="0"
     oninput="this.value = this.value.replace(/[^0-9]/g, '');"
@@ -973,6 +972,8 @@ resultadoHTML = `
     value='${partido.goles_visitante === "" ? "" : partido.goles_visitante}'
     onchange="updateResultado('${fecha}', ${index}, 'visitante', this.value)"
     class="w-10 md:w-12 text-center bg-white text-black">`;
+
+
 
 } else {
     
@@ -988,6 +989,8 @@ resultadoHTML = `
     value='${partido.goles_visitante === "" ? "" : partido.goles_visitante}'
     onchange="updateResultado('${fecha}', ${index}, 'visitante', this.value)"
     class="w-10 md:w-12 text-center bg-white text-black">`;
+
+
 
 }
 
