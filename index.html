@@ -26,8 +26,8 @@
 
             calcularTabla();
         }
-
     </script>
+
     <style>
         body {
             background-color: #0f3b21;
@@ -75,14 +75,17 @@
             text-align: center;
         }
 
+
         .fecha-card {
             background-color: #1b5530;
             border-radius: 8px;
             padding: 1rem;
-            margin-bottom: 1.5rem;
+            margin: 1rem auto;
             border: 2px solid #2a7a47;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            max-width: 900px;
         }
+
 
         .fecha-card table {
             width: 100%;
@@ -122,6 +125,14 @@
         <img src="lrrf-logo.png" alt="LRRF Logo" class="w-24 mb-2">
         <h2 class="text-2xl font-bold text-center">CAMPEONATO APERTURA LRRF 2025</h2>
     </div>
+
+    <div class="flex justify-center mb-4">
+        <label for="equipoFilter" class="mr-2 font-bold text-lg">Filtrar por equipo:</label>
+        <select id="equipoFilter" onchange="filtrarPorEquipo()" class="text-black p-1 rounded">
+            <option value="TODOS">Mostrar todos</option>
+        </select>
+    </div>
+
     <div id="fixture"></div>
 
 
@@ -132,6 +143,14 @@
             class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             Limpiar Resultados (Fechas 14 a 16)
         </button>
+    </div>
+
+
+    <div class="flex justify-center mb-4">
+        <label for="equipoFilterTabla" class="mr-2 font-bold text-lg">Filtrar tabla por equipo:</label>
+        <select id="equipoFilterTabla" onchange="filtrarTablaPorEquipo()" class="text-black p-1 rounded">
+            <option value="TODOS">Mostrar todos</option>
+        </select>
     </div>
 
     <div class="card">
@@ -1065,9 +1084,10 @@
         }
 
 
-        function renderFixture() {
+        function renderFixture(filtroEquipo = "TODOS") {
             console.log("Versión definitiva cargada");
             const container = document.getElementById("fixture");
+            container.innerHTML = "";
 
             function nombreAArchivo(nombre) {
                 return "escudos/" + nombre
@@ -1080,22 +1100,30 @@
             }
 
             function renderFecha(fechaNombre, partidos, editable = false) {
+                const partidosFiltrados = partidos.filter(p =>
+                    filtroEquipo === "TODOS" ||
+                    p.local === filtroEquipo ||
+                    p.visitante === filtroEquipo
+                );
+                if (partidosFiltrados.length === 0) return; // No renderizar si no hay partidos
+
                 const card = document.createElement("div");
                 card.className = "fecha-card";
                 card.innerHTML = `<h3 class="text-lg font-bold mb-2">${fechaNombre}</h3>`;
 
                 let tableHTML = `
-            <table>
-                <thead>
-                    <tr>
-                        <th>LOCAL</th>
-                        <th>RESULTADO</th>
-                        <th>VISITANTE</th>
-                    </tr>
-                </thead>
-                <tbody>`;
+    <table class="w-full table-fixed">
+        <thead>
+            <tr>
+                <th class="w-2/5 text-center">LOCAL</th>
+                <th class="w-1/5 text-center">RESULTADO</th>
+                <th class="w-2/5 text-center">VISITANTE</th>
+            </tr>
+        </thead>
+        <tbody>`;
 
-                partidos.forEach((partido, index) => {
+
+                partidosFiltrados.forEach((partido, index) => {
                     let resultadoHTML = "";
 
                     if (editable) {
@@ -1119,7 +1147,12 @@
                             <img src="${nombreAArchivo(partido.local)}" alt="${partido.local}" class="escudo-equipo">
                         </div>
                     </td>
-                    <td>${resultadoHTML}</td>
+                    <td>
+                        <div class="flex justify-center font-bold text-base">
+                        ${resultadoHTML}
+                        </div>
+                    </td>
+
                     <td>
                         <div class="flex items-center justify-start gap-2">
                             <img src="${nombreAArchivo(partido.visitante)}" alt="${partido.visitante}" class="escudo-equipo">
@@ -1248,6 +1281,61 @@
 
             calcularTabla();
         }
+
+        function initFiltroEquipos() {
+            const select = document.getElementById("equipoFilter");
+            equipos.forEach(equipo => {
+                const option = document.createElement("option");
+                option.value = equipo;
+                option.textContent = equipo;
+                select.appendChild(option);
+            });
+        }
+
+        function filtrarPorEquipo() {
+            const equipoSeleccionado = document.getElementById("equipoFilter").value;
+            renderFixture(equipoSeleccionado);
+        }
+
+
+
+
+
+        function initFiltroTablaEquipos() {
+            const select = document.getElementById("equipoFilterTabla");
+            equipos.forEach(equipo => {
+                const option = document.createElement("option");
+                option.value = equipo;
+                option.textContent = equipo;
+                select.appendChild(option);
+            });
+        }
+
+        function filtrarTablaPorEquipo() {
+            const equipoSeleccionado = document.getElementById("equipoFilterTabla").value;
+            const filas = document.querySelectorAll("#tabla-posiciones tr");
+
+            filas.forEach(fila => {
+                const equipoNombre = fila.querySelector("td:nth-child(2)");
+                if (!equipoNombre) return; // Skip header row
+
+                if (equipoSeleccionado === "TODOS" || equipoNombre.textContent.trim() === equipoSeleccionado) {
+                    fila.style.display = "";
+                } else {
+                    fila.style.display = "none";
+                }
+            });
+        }
+
+
+
+        window.onload = function () {
+            initFiltroEquipos();
+            initFiltroTablaEquipos();
+            renderFixture();
+            calcularTabla();
+        };
+
 
     </script>
 
