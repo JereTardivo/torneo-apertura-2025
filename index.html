@@ -5,7 +5,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Torneo Regional - Resultados y Tabla</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com">
+function limpiarResultadosFechas() {
+    ["FECHA 14", "FECHA 15", "FECHA 16"].forEach(fecha => {
+        fechasEditables[fecha].forEach((partido, index) => {
+            partido.goles_local = "";
+            partido.goles_visitante = "";
+        });
+    });
+
+    // Vaciar los inputs visibles
+    document.querySelectorAll(".fecha-card").forEach(card => {
+        const titulo = card.querySelector("h3").innerText;
+        if (["FECHA 14", "FECHA 15", "FECHA 16"].includes(titulo)) {
+            card.querySelectorAll("input[type='number']").forEach(input => {
+                input.value = "";
+            });
+        }
+    });
+
+    calcularTabla();
+}
+
+</script>
     <style>
         body { background-color: #0f3b21; color: #fff; font-family: Arial, sans-serif; }
         .card { background-color: #1b5530; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
@@ -64,7 +86,15 @@ img.escudo-equipo {
 
     
 
-    <div class="card">
+    
+    <div class="flex justify-center my-6">
+        <button onclick="limpiarResultadosFechas()" 
+            class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Limpiar Resultados (Fechas 14 a 16)
+        </button>
+    </div>
+
+<div class="card">
         <h2 class="text-xl mb-2 font-bold text-center">Tabla de Posiciones</h2>
         <table class="table-auto text-sm text-white border-collapse w-full">
             <thead>
@@ -72,7 +102,7 @@ img.escudo-equipo {
                     <th class="border">#</th>
                     <th class="border">Equipo</th>
                     <th class="border">PJ</th>
-		    <th class="border">Pts</th>
+					<th class="border">Pts</th>
                     <th class="border">PG</th>
                     <th class="border">PE</th>
                     <th class="border">PP</th>
@@ -1113,7 +1143,7 @@ function calcularTabla() {
                     <td class="border">${index + 1}</td>
                     <td class="border text-left pl-2">${equipo}</td>
                     <td class="border">${t.PJ}</td>
-		    <td class="border">${t.Pts}</td>
+					<td class="border">${t.Pts}</td>
                     <td class="border">${t.PG}</td>
                     <td class="border">${t.PE}</td>
                     <td class="border">${t.PP}</td>
@@ -1126,6 +1156,28 @@ function calcularTabla() {
 
     renderFixture();
     calcularTabla();
+
+function limpiarResultadosFechas() {
+    ["FECHA 14", "FECHA 15", "FECHA 16"].forEach(fecha => {
+        fechasEditables[fecha].forEach((partido, index) => {
+            partido.goles_local = "";
+            partido.goles_visitante = "";
+        });
+    });
+
+    // Vaciar los inputs visibles
+    document.querySelectorAll(".fecha-card").forEach(card => {
+        const titulo = card.querySelector("h3").innerText;
+        if (["FECHA 14", "FECHA 15", "FECHA 16"].includes(titulo)) {
+            card.querySelectorAll("input[type='number']").forEach(input => {
+                input.value = "";
+            });
+        }
+    });
+
+    calcularTabla();
+}
+
 </script>
 
 </body>
