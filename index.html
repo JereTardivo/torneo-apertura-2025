@@ -204,6 +204,18 @@
     </div>
 
     <script>
+
+        function nombreAArchivo(nombre) {
+                return "escudos/" + nombre
+                    .replaceAll("(", "")
+                    .replaceAll(")", "")
+                    .replaceAll(".", "") // eliminar puntos
+                    .replaceAll(" ", "_")
+                    .toUpperCase()
+                    + ".png";
+            }
+
+            
         const fechasFijas = {
             "FECHA 1": [
                 {
@@ -1118,15 +1130,7 @@
             const container = document.getElementById("fixture");
             container.innerHTML = "";
 
-            function nombreAArchivo(nombre) {
-                return "escudos/" + nombre
-                    .replaceAll("(", "")
-                    .replaceAll(")", "")
-                    .replaceAll(".", "") // eliminar puntos
-                    .replaceAll(" ", "_")
-                    .toUpperCase()
-                    + ".png";
-            }
+            
 
             function renderFecha(fechaNombre, partidos, editable = false) {
                 const partidosFiltrados = partidos.filter(p =>
@@ -1274,7 +1278,12 @@
                 tbody.innerHTML += `
                 <tr>
                     <td class="border pos-${index + 1}">${index + 1}</td>
-                    <td class="border text-left pl-2">${equipo}</td>
+                    <td class="border text-left pl-2">
+                        <div class="flex items-center gap-2">
+                            <img src="${nombreAArchivo(equipo)}" alt="${equipo}" class="escudo-equipo">
+                            <span>${equipo}</span>
+                        </div>
+                    </td>
                     <td class="border">${t.PJ}</td>
 					<td class="border">${t.Pts}</td>
                     <td class="border">${t.PG}</td>
