@@ -104,7 +104,11 @@ body {
         }
 
 /* Para inputs de resultados (type="text") */
+
+
+
+/* DEFINITIVO - Para inputs de resultados (type="text") */
 input[type="text"] {
-    background: #fff;
-    color: #000;
+    background: #fff !important;
+    color: #000 !important;
 }
