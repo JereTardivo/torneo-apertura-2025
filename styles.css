@@ -116,3 +116,15 @@ input[type="text"][inputmode="numeric"] {
     color: black !important;
     background-color: white !important;
 }
+
+
+
+/* === Truncado de nombres de equipo en tabla de posiciones === */
+.tabla-posiciones td:nth-child(2) span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    max-width: 120px; /* ajustar si hace falta */
+    vertical-align: middle;
+}
