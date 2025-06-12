@@ -907,7 +907,7 @@ const fechasFijas = {
                     const filas = card.querySelectorAll("tbody tr");
                     const fila = filas[index];
                     if (fila) {
-                        const inputs = fila.querySelectorAll("input[type='text'][inputmode='numeric']");
+                        const inputs = fila.querySelectorAll("input[type='number']");
                         if (equipo === "local") {
                             inputs[0].value = valor;
                         } else {
@@ -1078,7 +1078,7 @@ const fechasFijas = {
                     <td class="border text-left pl-2">
                         <div class="flex items-center gap-2">
                             <img src="${nombreAArchivo(equipo)}" alt="${equipo}" class="escudo-equipo">
-                            <span>${equipo}</span>
+                            <span class="truncate">${equipo}</span>
                         </div>
                     </td>
                     <td class="border">${t.PJ}</td>
