@@ -112,3 +112,13 @@ input[type="text"] {
     background: #fff !important;
     color: #000 !important;
 }
+
+/* Mejor visualización de nombres de equipos */
+.fixture td span,
+.tabla-posiciones td span,
+.tabla-posiciones td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 120px;
+}
