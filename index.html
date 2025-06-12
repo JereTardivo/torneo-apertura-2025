@@ -1054,9 +1054,9 @@
                 fechasFijas[fecha].forEach(partido => {
                     card.innerHTML += `
                     <div class="match flex justify-between items-center">
-                        <span>${partido.local}</span>
+                        <span class="text-sm md:text-base truncate">${partido.local}</span>
                         <span class="font-bold text-lg">${partido.goles_local} - ${partido.goles_visitante}</span>
-                        <span>${partido.visitante}</span>
+                        <span class="text-sm md:text-base truncate">${partido.visitante}</span>
                     </div>`;
                 });
                 container.appendChild(card);
@@ -1071,13 +1071,13 @@
                 fechasEditables[fecha].forEach((partido, index) => {
                     card.innerHTML += `
                     <div class="match flex justify-between items-center">
-                        <span>${partido.local}</span>
+                        <span class="text-sm md:text-base truncate">${partido.local}</span>
                         <input type="number" min="0" value="${partido.goles_local === "" ? "" : partido.goles_local}" 
                             onchange="updateResultado('${fecha}', ${index}, 'local', this.value)">
                         <span class="font-bold text-lg">-</span>
                         <input type="number" min="0" value="${partido.goles_visitante === "" ? "" : partido.goles_visitante}" 
                             onchange="updateResultado('${fecha}', ${index}, 'visitante', this.value)">
-                        <span>${partido.visitante}</span>
+                        <span class="text-sm md:text-base truncate">${partido.visitante}</span>
                     </div>`;
                 });
                 container.appendChild(card);
@@ -1149,7 +1149,10 @@
         <thead>
             <tr>
                 <th class="w-2/5 text-center">LOCAL</th>
-                <th class="w-1/5 text-center">RESULTADO</th>
+                <th class="w-1/5 text-center">
+    <span class="block md:hidden">R</span>
+    <span class="hidden md:block">RESULTADO</span>
+    </th>
                 <th class="w-2/5 text-center">VISITANTE</th>
             </tr>
         </thead>
@@ -1176,7 +1179,7 @@
                 <tr>
                     <td>
                         <div class="flex items-center justify-end gap-2">
-                            <span>${partido.local}</span>
+                            <span class="text-sm md:text-base truncate">${partido.local}</span>
                             <img src="${nombreAArchivo(partido.local)}" alt="${partido.local}" class="escudo-equipo">
                         </div>
                     </td>
@@ -1189,7 +1192,7 @@
                     <td>
                         <div class="flex items-center justify-start gap-2">
                             <img src="${nombreAArchivo(partido.visitante)}" alt="${partido.visitante}" class="escudo-equipo">
-                            <span>${partido.visitante}</span>
+                            <span class="text-sm md:text-base truncate">${partido.visitante}</span>
                         </div>
                     </td>
                 </tr>`;
