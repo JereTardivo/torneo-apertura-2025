@@ -102,3 +102,9 @@ body {
             /* Celeste */
             color: #000;
         }
+
+
+/* === Force match input text color === */
+.fixture input[type="number"] {
+    color: black !important;
+}
