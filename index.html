@@ -116,6 +116,23 @@
             object-fit: contain;
             display: inline-block;
         }
+
+        .pos-1 {
+            background-color: #ffd700;
+            /* Dorado */
+            color: #000;
+        }
+
+        .pos-2,
+        .pos-3,
+        .pos-4,
+        .pos-5,
+        .pos-6,
+        .pos-7 {
+            background-color: #4fc3f7;
+            /* Celeste */
+            color: #000;
+        }
     </style>
 </head>
 
@@ -172,6 +189,18 @@
             </thead>
             <tbody id="tabla-posiciones"></tbody>
         </table>
+        <div class="mt-4 text-sm text-white">
+            <div class="flex items-center mb-1">
+                <div class="w-4 h-4 mr-2" style="background-color: #ffd700;"></div>
+                <span>1° Clasifica directamente a semifinales</span>
+            </div>
+            <div class="flex items-center">
+                <div class="w-4 h-4 mr-2" style="background-color: #4fc3f7;"></div>
+                <span>2° al 7° Clasifican a cuartos de final (partido en cancha del mejor posicionado, con ventaja
+                    deportiva)</span>
+            </div>
+        </div>
+
     </div>
 
     <script>
@@ -1244,7 +1273,7 @@
                 const t = tablaPosiciones[equipo];
                 tbody.innerHTML += `
                 <tr>
-                    <td class="border">${index + 1}</td>
+                    <td class="border pos-${index + 1}">${index + 1}</td>
                     <td class="border text-left pl-2">${equipo}</td>
                     <td class="border">${t.PJ}</td>
 					<td class="border">${t.Pts}</td>
