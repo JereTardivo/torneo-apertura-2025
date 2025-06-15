@@ -660,28 +660,24 @@ const fechasFijas = {
                     "visitante": "ATL. RIO TERCERO",
                     "goles_visitante": 2
                 }
-            ]
-        };
-
-        const fechasEditables = {
-            "FECHA 14": [
+            ],  "FECHA 14": [
                 {
                     "local": "SP. BELGRANO",
-                    "goles_local": "",
+                    "goles_local": 1,
                     "visitante": "ATL. INDEPENDIENTE",
-                    "goles_visitante": ""
+                    "goles_visitante": 2
                 },
                 {
                     "local": "ATL. RIO TERCERO",
-                    "goles_local": "",
+                    "goles_local": 2,
                     "visitante": "ATL. ALMAFUERTE",
-                    "goles_visitante": ""
+                    "goles_visitante": 1
                 },
                 {
                     "local": "DEPORTIVO ITALIANO",
-                    "goles_local": "",
+                    "goles_local": 0,
                     "visitante": "VECINOS UNIDOS",
-                    "goles_visitante": ""
+                    "goles_visitante": 1
                 },
                 {
                     "local": "REC. ELENENSE",
@@ -690,10 +686,10 @@ const fechasFijas = {
                     "goles_visitante": ""
                 },
                 {
-                    "local": "BELGRANO (BERROTARAN)",
-                    "goles_local": "",
-                    "visitante": "TALLERES (BERROTARAN)",
-                    "goles_visitante": ""
+                    "local": "TALLERES (BERROTARAN)",
+                    "goles_local": 1,
+                    "visitante": "BELGRANO (BERROTARAN)",
+                    "goles_visitante": 0
                 },
                 {
                     "local": "ATL. ASCASUBI",
@@ -709,11 +705,14 @@ const fechasFijas = {
                 },
                 {
                     "local": "ESTUDIANTES (HERNANDO)",
-                    "goles_local": "",
+                    "goles_local": 3,
                     "visitante": "9 DE JULIO (RIO TERCERO)",
-                    "goles_visitante": ""
+                    "goles_visitante": 2
                 }
-            ],
+            ]
+        };
+
+        const fechasEditables = {
             "FECHA 15": [
                 {
                     "local": "ESTUDIANTES (HERNANDO)",
