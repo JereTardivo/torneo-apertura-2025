@@ -1106,7 +1106,7 @@ const fechasFijas = {
             // Vaciar los inputs visibles
             document.querySelectorAll(".fecha-card").forEach(card => {
                 const titulo = card.querySelector("h3").innerText;
-                if (["FECHA 14", "FECHA 15", "FECHA 16"].includes(titulo)) {
+                if (["FECHA 15", "FECHA 16"].includes(titulo)) {
                     card.querySelectorAll("input[type='number']").forEach(input => {
                         input.value = "";
                     });
