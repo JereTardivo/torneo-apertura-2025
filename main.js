@@ -681,9 +681,9 @@ const fechasFijas = {
                 },
                 {
                     "local": "REC. ELENENSE",
-                    "goles_local": "",
+                    "goles_local": 1,
                     "visitante": "JUVENTUD AGRARIO",
-                    "goles_visitante": ""
+                    "goles_visitante": 1
                 },
                 {
                     "local": "TALLERES (BERROTARAN)",
@@ -699,9 +699,9 @@ const fechasFijas = {
                 },
                 {
                     "local": "DEP. INDEPENDIENTE",
-                    "goles_local": "",
+                    "goles_local": 2,
                     "visitante": "VILLA GENERAL BELGRANO",
-                    "goles_visitante": ""
+                    "goles_visitante": 1
                 },
                 {
                     "local": "ESTUDIANTES (HERNANDO)",
