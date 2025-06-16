@@ -1096,7 +1096,7 @@ const fechasFijas = {
         calcularTabla();
 
         function limpiarResultadosFechas() {
-            ["FECHA 14", "FECHA 15", "FECHA 16"].forEach(fecha => {
+            ["FECHA 15", "FECHA 16"].forEach(fecha => {
                 fechasEditables[fecha].forEach((partido, index) => {
                     partido.goles_local = "";
                     partido.goles_visitante = "";
