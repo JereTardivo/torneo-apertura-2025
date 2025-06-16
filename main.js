@@ -919,7 +919,7 @@ const fechasFijas = {
 
 
         function renderFixture(filtroEquipo = "TODOS") {
-            console.log("Versión definitiva cargada");
+            
             const container = document.getElementById("fixture");
             container.innerHTML = "";
 
