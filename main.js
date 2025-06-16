@@ -693,9 +693,9 @@ const fechasFijas = {
                 },
                 {
                     "local": "ATL. ASCASUBI",
-                    "goles_local": "",
+                    "goles_local": 1,
                     "visitante": "NAUTICO RUMIPAL",
-                    "goles_visitante": ""
+                    "goles_visitante": 0
                 },
                 {
                     "local": "DEP. INDEPENDIENTE",
