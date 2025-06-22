@@ -709,60 +709,60 @@ const fechasFijas = {
                     "visitante": "9 DE JULIO (RIO TERCERO)",
                     "goles_visitante": 2
                 }
+            ], "FECHA 15": [
+                {
+                    "local": "ESTUDIANTES (HERNANDO)",
+                    "goles_local": 3,
+                    "visitante": "SP. BELGRANO",
+                    "goles_visitante": 0
+                },
+                {
+                    "local": "9 DE JULIO (RIO TERCERO)",
+                    "goles_local": 3,
+                    "visitante": "DEP. INDEPENDIENTE",
+                    "goles_visitante": 1
+                },
+                {
+                    "local": "VILLA GENERAL BELGRANO",
+                    "goles_local": 0,
+                    "visitante": "ATL. ASCASUBI",
+                    "goles_visitante": 1
+                },
+                {
+                    "local": "NAUTICO RUMIPAL",
+                    "goles_local": 1,
+                    "visitante": "BELGRANO (BERROTARAN)",
+                    "goles_visitante": 1
+                },
+                {
+                    "local": "TALLERES (BERROTARAN)",
+                    "goles_local": 2,
+                    "visitante": "REC. ELENENSE",
+                    "goles_visitante": 1
+                },
+                {
+                    "local": "JUVENTUD AGRARIO",
+                    "goles_local": 4,
+                    "visitante": "DEPORTIVO ITALIANO",
+                    "goles_visitante": 0
+                },
+                {
+                    "local": "VECINOS UNIDOS",
+                    "goles_local": 1,
+                    "visitante": "ATL. RIO TERCERO",
+                    "goles_visitante": 0
+                },
+                {
+                    "local": "ATL. ALMAFUERTE",
+                    "goles_local": 1,
+                    "visitante": "ATL. INDEPENDIENTE",
+                    "goles_visitante": 1
+                }
             ]
         };
 
         const fechasEditables = {
-            "FECHA 15": [
-                {
-                    "local": "ESTUDIANTES (HERNANDO)",
-                    "goles_local": "",
-                    "visitante": "SP. BELGRANO",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "9 DE JULIO (RIO TERCERO)",
-                    "goles_local": "",
-                    "visitante": "DEP. INDEPENDIENTE",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "VILLA GENERAL BELGRANO",
-                    "goles_local": "",
-                    "visitante": "ATL. ASCASUBI",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "NAUTICO RUMIPAL",
-                    "goles_local": "",
-                    "visitante": "BELGRANO (BERROTARAN)",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "TALLERES (BERROTARAN)",
-                    "goles_local": "",
-                    "visitante": "REC. ELENENSE",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "JUVENTUD AGRARIO",
-                    "goles_local": "",
-                    "visitante": "DEPORTIVO ITALIANO",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "VECINOS UNIDOS",
-                    "goles_local": "",
-                    "visitante": "ATL. RIO TERCERO",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "ATL. ALMAFUERTE",
-                    "goles_local": "",
-                    "visitante": "ATL. INDEPENDIENTE",
-                    "goles_visitante": ""
-                }
-            ],
+           
             "FECHA 16": [
                 {
                     "local": "SP. BELGRANO",
