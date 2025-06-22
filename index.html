@@ -7,7 +7,7 @@
     <title>Torneo Regional - Resultados y Tabla</title>
     <script src="https://cdn.tailwindcss.com">
         function limpiarResultadosFechas() {
-            [ "FECHA 15", "FECHA 16"].forEach(fecha => {
+            [ "FFECHA 16"].forEach(fecha => {
                 fechasEditables[fecha].forEach((partido, index) => {
                     partido.goles_local = "";
                     partido.goles_visitante = "";
@@ -17,7 +17,7 @@
             // Vaciar los inputs visibles
             document.querySelectorAll(".fecha-card").forEach(card => {
                 const titulo = card.querySelector("h3").innerText;
-                if (["FECHA 15", "FECHA 16"].includes(titulo)) {
+                if (["FECHA 16"].includes(titulo)) {
                     card.querySelectorAll("input[type='number']").forEach(input => {
                         input.value = "";
                     });
