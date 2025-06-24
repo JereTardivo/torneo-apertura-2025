@@ -7,7 +7,7 @@
     <title>Torneo Regional - Resultados y Tabla</title>
     <script src="https://cdn.tailwindcss.com">
         function limpiarResultadosFechas() {
-            [ "FFECHA 16"].forEach(fecha => {
+            ["FFECHA 16"].forEach(fecha => {
                 fechasEditables[fecha].forEach((partido, index) => {
                     partido.goles_local = "";
                     partido.goles_visitante = "";
@@ -47,16 +47,12 @@
 
     <div id="fixture"></div>
 
-
-
-
     <div class="flex justify-center my-6">
         <button onclick="limpiarResultadosFechas()"
             class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             Limpiar Resultados (Fecha 16)
         </button>
     </div>
-
 
     <div class="flex justify-center mb-4">
         <label for="equipoFilterTabla" class="mr-2 font-bold text-lg">Filtrar tabla por equipo:</label>
@@ -84,6 +80,7 @@
             </thead>
             <tbody id="tabla-posiciones"></tbody>
         </table>
+        
         <div class="mt-4 text-sm text-white">
             <div class="flex items-center mb-1">
                 <div class="w-4 h-4 mr-2" style="background-color: #ffd700;"></div>
@@ -94,7 +91,26 @@
                 <span>2° al 7° Clasifican a cuartos de final (partido en cancha del mejor posicionado)</span>
             </div>
         </div>
+        <br> 
+        <div id="explicacion-desempate" class="mt-4 text-sm text-white p-4 bg-slate-800 rounded-md"></div>
+    </div>
 
+    <div class="mt-8 p-4 border-2 border-gray-400 rounded-md bg-white text-black max-w-4xl mx-auto">
+        <h1 class="text-xl font-bold mb-4">LA TABLITA</h1>
+        <h2 class="text-xl font-bold mb-4"> Desempates en caso de igualdad de puntos</h2>
+        <ol class="list-decimal list-inside space-y-1 text-sm md:text-base">
+            <li>El que haya obtenido mayor puntaje en los partidos disputados entre sí (los empatados).</li>
+            <li>El que haya obtenido mayor puntaje en los partidos disputados contra el o los equipos clasificados
+                (todos).</li>
+            <li>El que tenga mayor cantidad de goles a favor en los partidos disputados entre sí (los empatados).</li>
+            <li>El que tenga menos goles en contra en los partidos disputados entre sí (los empatados).</li>
+            <li>El que tenga menor cantidad de goles en contra en la disputa completa del campeonato. </li>
+            <li>El que tenga mayor cantidad de goles a favor en la disputa completa del campeonato.</li>
+            <li>Fair Play: El equipo que tenga menor cantidad de expulsados en la disputa completa del campeonato.</li>
+            <li>En caso de persistir la igualdad se recurrirá a un sorteo a realizarse en una reunión del Consejo
+                Directivo de la Liga Regional Riotercerense de Fútbol y/o Mesa Directiva con los clubes involucrados.
+            </li>
+        </ol>
     </div>
 
     <script src="main.js"></script>

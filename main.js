@@ -1,868 +1,871 @@
 function nombreAArchivo(nombre) {
-                return "escudos/" + nombre
-                    .replaceAll("(", "")
-                    .replaceAll(")", "")
-                    .replaceAll(".", "") // eliminar puntos
-                    .replaceAll(" ", "_")
-                    .toUpperCase()
-                    + ".png";
-            }
+    return "escudos/" + nombre
+        .replaceAll("(", "")
+        .replaceAll(")", "")
+        .replaceAll(".", "") // eliminar puntos
+        .replaceAll(" ", "_")
+        .toUpperCase()
+        + ".png";
+}
 
 
 
 const fechasFijas = {
-            "FECHA 1": [
-                {
-                    "local": "DEP. INDEPENDIENTE",
-                    "goles_local": 1,
-                    "visitante": "SP. BELGRANO",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "ATL. ASCASUBI",
-                    "goles_local": 2,
-                    "visitante": "ESTUDIANTES (HERNANDO)",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "BELGRANO (BERROTARAN)",
-                    "goles_local": 2,
-                    "visitante": "9 DE JULIO (RIO TERCERO)",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "REC. ELENENSE",
-                    "goles_local": 0,
-                    "visitante": "VILLA GENERAL BELGRANO",
-                    "goles_visitante": 3
-                },
-                {
-                    "local": "NAUTICO RUMIPAL",
-                    "goles_local": 1,
-                    "visitante": "DEPORTIVO ITALIANO",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "TALLERES (BERROTARAN)",
-                    "goles_local": 0,
-                    "visitante": "ATL. RIO TERCERO",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "JUVENTUD AGRARIO",
-                    "goles_local": 2,
-                    "visitante": "ATL. INDEPENDIENTE",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "VECINOS UNIDOS",
-                    "goles_local": 2,
-                    "visitante": "ATL. ALMAFUERTE",
-                    "goles_visitante": 3
-                }
-            ],
-            "FECHA 2": [
-                {
-                    "local": "VECINOS UNIDOS",
-                    "goles_local": 1,
-                    "visitante": "SP. BELGRANO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "ATL. ALMAFUERTE",
-                    "goles_local": 1,
-                    "visitante": "JUVENTUD AGRARIO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "ATL. INDEPENDIENTE",
-                    "goles_local": 1,
-                    "visitante": "TALLERES (BERROTARAN)",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "ATL. RIO TERCERO",
-                    "goles_local": 2,
-                    "visitante": "NAUTICO RUMIPAL",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "DEPORTIVO ITALIANO",
-                    "goles_local": 0,
-                    "visitante": "VILLA GENERAL BELGRANO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "REC. ELENENSE",
-                    "goles_local": 2,
-                    "visitante": "9 DE JULIO (RIO TERCERO)",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "ESTUDIANTES (HERNANDO)",
-                    "goles_local": 0,
-                    "visitante": "BELGRANO (BERROTARAN)",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "ATL. ASCASUBI",
-                    "goles_local": 1,
-                    "visitante": "DEP. INDEPENDIENTE",
-                    "goles_visitante": 0
-                }
-            ],
-            "FECHA 3": [
-                {
-                    "local": "SP. BELGRANO",
-                    "goles_local": 3,
-                    "visitante": "ATL. ASCASUBI",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "DEP. INDEPENDIENTE",
-                    "goles_local": 2,
-                    "visitante": "BELGRANO (BERROTARAN)",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "ESTUDIANTES (HERNANDO)",
-                    "goles_local": 0,
-                    "visitante": "REC. ELENENSE",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "9 DE JULIO (RIO TERCERO)",
-                    "goles_local": 3,
-                    "visitante": "DEPORTIVO ITALIANO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "VILLA GENERAL BELGRANO",
-                    "goles_local": 1,
-                    "visitante": "ATL. RIO TERCERO",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "NAUTICO RUMIPAL",
-                    "goles_local": 2,
-                    "visitante": "ATL. INDEPENDIENTE",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "TALLERES (BERROTARAN)",
-                    "goles_local": 4,
-                    "visitante": "ATL. ALMAFUERTE",
-                    "goles_visitante": 3
-                },
-                {
-                    "local": "JUVENTUD AGRARIO",
-                    "goles_local": 2,
-                    "visitante": "VECINOS UNIDOS",
-                    "goles_visitante": 2
-                }
-            ],
-            "FECHA 4": [
-                {
-                    "local": "JUVENTUD AGRARIO",
-                    "goles_local": 2,
-                    "visitante": "SP. BELGRANO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "VECINOS UNIDOS",
-                    "goles_local": 0,
-                    "visitante": "TALLERES (BERROTARAN)",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "ATL. ALMAFUERTE",
-                    "goles_local": 0,
-                    "visitante": "NAUTICO RUMIPAL",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "ATL. INDEPENDIENTE",
-                    "goles_local": 1,
-                    "visitante": "VILLA GENERAL BELGRANO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "9 DE JULIO (RIO TERCERO)",
-                    "goles_local": 2,
-                    "visitante": "ATL. RIO TERCERO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "DEPORTIVO ITALIANO",
-                    "goles_local": 0,
-                    "visitante": "ESTUDIANTES (HERNANDO)",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "REC. ELENENSE",
-                    "goles_local": 0,
-                    "visitante": "DEP. INDEPENDIENTE",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "ATL. ASCASUBI",
-                    "goles_local": 2,
-                    "visitante": "BELGRANO (BERROTARAN)",
-                    "goles_visitante": 3
-                }
-            ],
-            "FECHA 5": [
-                {
-                    "local": "SP. BELGRANO",
-                    "goles_local": 0,
-                    "visitante": "BELGRANO (BERROTARAN)",
-                    "goles_visitante": 3
-                },
-                {
-                    "local": "ATL. ASCASUBI",
-                    "goles_local": 3,
-                    "visitante": "REC. ELENENSE",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "DEPORTIVO ITALIANO",
-                    "goles_local": 1,
-                    "visitante": "DEP. INDEPENDIENTE",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "ESTUDIANTES (HERNANDO)",
-                    "goles_local": 0,
-                    "visitante": "ATL. RIO TERCERO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "9 DE JULIO (RIO TERCERO)",
-                    "goles_local": 0,
-                    "visitante": "ATL. INDEPENDIENTE",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "VILLA GENERAL BELGRANO",
-                    "goles_local": 0,
-                    "visitante": "ATL. ALMAFUERTE",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "NAUTICO RUMIPAL",
-                    "goles_local": 2,
-                    "visitante": "VECINOS UNIDOS",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "TALLERES (BERROTARAN)",
-                    "goles_local": 1,
-                    "visitante": "JUVENTUD AGRARIO",
-                    "goles_visitante": 2
-                }
-            ],
-            "FECHA 6": [
-                {
-                    "local": "TALLERES (BERROTARAN)",
-                    "goles_local": 1,
-                    "visitante": "SP. BELGRANO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "NAUTICO RUMIPAL",
-                    "goles_local": 0,
-                    "visitante": "JUVENTUD AGRARIO",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "VECINOS UNIDOS",
-                    "goles_local": 0,
-                    "visitante": "VILLA GENERAL BELGRANO",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "ATL. ALMAFUERTE",
-                    "goles_local": 0,
-                    "visitante": "9 DE JULIO (RIO TERCERO)",
-                    "goles_visitante": 6
-                },
-                {
-                    "local": "ESTUDIANTES (HERNANDO)",
-                    "goles_local": 0,
-                    "visitante": "ATL. INDEPENDIENTE",
-                    "goles_visitante": 3
-                },
-                {
-                    "local": "ATL. RIO TERCERO",
-                    "goles_local": 3,
-                    "visitante": "DEP. INDEPENDIENTE",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "DEPORTIVO ITALIANO",
-                    "goles_local": 1,
-                    "visitante": "ATL. ASCASUBI",
-                    "goles_visitante": 3
-                },
-                {
-                    "local": "BELGRANO (BERROTARAN)",
-                    "goles_local": 1,
-                    "visitante": "REC. ELENENSE",
-                    "goles_visitante": 1
-                }
-            ],
-            "FECHA 7": [
-                {
-                    "local": "SP. BELGRANO",
-                    "goles_local": 1,
-                    "visitante": "REC. ELENENSE",
-                    "goles_visitante": 3
-                },
-                {
-                    "local": "BELGRANO (BERROTARAN)",
-                    "goles_local": 3,
-                    "visitante": "DEPORTIVO ITALIANO",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "ATL. ASCASUBI",
-                    "goles_local": 0,
-                    "visitante": "ATL. RIO TERCERO",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "DEP. INDEPENDIENTE",
-                    "goles_local": 3,
-                    "visitante": "ATL. INDEPENDIENTE",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "ESTUDIANTES (HERNANDO)",
-                    "goles_local": 3,
-                    "visitante": "ATL. ALMAFUERTE",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "9 DE JULIO (RIO TERCERO)",
-                    "goles_local": 1,
-                    "visitante": "VECINOS UNIDOS",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "VILLA GENERAL BELGRANO",
-                    "goles_local": 0,
-                    "visitante": "JUVENTUD AGRARIO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "NAUTICO RUMIPAL",
-                    "goles_local": 2,
-                    "visitante": "TALLERES (BERROTARAN)",
-                    "goles_visitante": 2
-                }
-            ],
-            "FECHA 8": [
-                {
-                    "local": "NAUTICO RUMIPAL",
-                    "goles_local": 4,
-                    "visitante": "SP. BELGRANO",
-                    "goles_visitante": 3
-                },
-                {
-                    "local": "TALLERES (BERROTARAN)",
-                    "goles_local": 3,
-                    "visitante": "VILLA GENERAL BELGRANO",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "JUVENTUD AGRARIO",
-                    "goles_local": 0,
-                    "visitante": "9 DE JULIO (RIO TERCERO)",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "VECINOS UNIDOS",
-                    "goles_local": 3,
-                    "visitante": "ESTUDIANTES (HERNANDO)",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "ATL. ALMAFUERTE",
-                    "goles_local": 2,
-                    "visitante": "DEP. INDEPENDIENTE",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "ATL. INDEPENDIENTE",
-                    "goles_local": 1,
-                    "visitante": "ATL. ASCASUBI",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "ATL. RIO TERCERO",
-                    "goles_local": 2,
-                    "visitante": "BELGRANO (BERROTARAN)",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "DEPORTIVO ITALIANO",
-                    "goles_local": 1,
-                    "visitante": "REC. ELENENSE",
-                    "goles_visitante": 3
-                }
-            ],
-            "FECHA 9": [
-                {
-                    "local": "SP. BELGRANO",
-                    "goles_local": 1,
-                    "visitante": "DEPORTIVO ITALIANO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "REC. ELENENSE",
-                    "goles_local": 1,
-                    "visitante": "ATL. RIO TERCERO",
-                    "goles_visitante": 3
-                },
-                {
-                    "local": "BELGRANO (BERROTARAN)",
-                    "goles_local": 2,
-                    "visitante": "ATL. INDEPENDIENTE",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "ATL. ASCASUBI",
-                    "goles_local": 1,
-                    "visitante": "ATL. ALMAFUERTE",
-                    "goles_visitante": 3
-                },
-                {
-                    "local": "DEP. INDEPENDIENTE",
-                    "goles_local": 1,
-                    "visitante": "VECINOS UNIDOS",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "ESTUDIANTES (HERNANDO)",
-                    "goles_local": 1,
-                    "visitante": "JUVENTUD AGRARIO",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "9 DE JULIO (RIO TERCERO)",
-                    "goles_local": 0,
-                    "visitante": "TALLERES (BERROTARAN)",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "VILLA GENERAL BELGRANO",
-                    "goles_local": 1,
-                    "visitante": "NAUTICO RUMIPAL",
-                    "goles_visitante": 1
-                }
-            ],
-            "FECHA 10": [
-                {
-                    "local": "VILLA GENERAL BELGRANO",
-                    "goles_local": 0,
-                    "visitante": "SP. BELGRANO",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "NAUTICO RUMIPAL",
-                    "goles_local": 1,
-                    "visitante": "9 DE JULIO (RIO TERCERO)",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "TALLERES (BERROTARAN)",
-                    "goles_local": 3,
-                    "visitante": "ESTUDIANTES (HERNANDO)",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "DEP. INDEPENDIENTE",
-                    "goles_local": 1,
-                    "visitante": "JUVENTUD AGRARIO",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "VECINOS UNIDOS",
-                    "goles_local": 2,
-                    "visitante": "ATL. ASCASUBI",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "ATL. ALMAFUERTE",
-                    "goles_local": 2,
-                    "visitante": "BELGRANO (BERROTARAN)",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "ATL. INDEPENDIENTE",
-                    "goles_local": 2,
-                    "visitante": "REC. ELENENSE",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "ATL. RIO TERCERO",
-                    "goles_local": 2,
-                    "visitante": "DEPORTIVO ITALIANO",
-                    "goles_visitante": 0
-                }
-            ],
-            "FECHA 11": [
-                {
-                    "local": "ATL. INDEPENDIENTE",
-                    "goles_local": 0,
-                    "visitante": "ESTUDIANTES (HERNANDO)",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "ATL. RIO TERCERO",
-                    "goles_local": 1,
-                    "visitante": "9 DE JULIO (RIO TERCERO)",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "VILLA GENERAL BELGRANO",
-                    "goles_local": 1,
-                    "visitante": "DEPORTIVO ITALIANO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "REC. ELENENSE",
-                    "goles_local": 3,
-                    "visitante": "NAUTICO RUMIPAL",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "BELGRANO (BERROTARAN)",
-                    "goles_local": 0,
-                    "visitante": "TALLERES (BERROTARAN)",
-                    "goles_visitante": 3
-                },
-                {
-                    "local": "ATL. ASCASUBI",
-                    "goles_local": 1,
-                    "visitante": "JUVENTUD AGRARIO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "VECINOS UNIDOS",
-                    "goles_local": 2,
-                    "visitante": "DEP. INDEPENDIENTE",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "ATL. ALMAFUERTE",
-                    "goles_local": 0,
-                    "visitante": "SP. BELGRANO",
-                    "goles_visitante": 1
-                }
-            ],
-            "FECHA 12": [
-                {
-                    "local": "SP. BELGRANO",
-                    "goles_local": 4,
-                    "visitante": "ATL. RIO TERCERO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "DEPORTIVO ITALIANO",
-                    "goles_local": 1,
-                    "visitante": "ATL. INDEPENDIENTE",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "REC. ELENENSE",
-                    "goles_local": 2,
-                    "visitante": "ATL. ALMAFUERTE",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "BELGRANO (BERROTARAN)",
-                    "goles_local": 2,
-                    "visitante": "VECINOS UNIDOS",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "JUVENTUD AGRARIO",
-                    "goles_local": 4,
-                    "visitante": "ATL. ASCASUBI",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "DEP. INDEPENDIENTE",
-                    "goles_local": 1,
-                    "visitante": "TALLERES (BERROTARAN)",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "ESTUDIANTES (HERNANDO)",
-                    "goles_local": 1,
-                    "visitante": "NAUTICO RUMIPAL",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "9 DE JULIO (RIO TERCERO)",
-                    "goles_local": 1,
-                    "visitante": "VILLA GENERAL BELGRANO",
-                    "goles_visitante": 1
-                }
-            ],
-            "FECAH 13": [
-                {
-                    "local": "9 DE JULIO (RIO TERCERO)",
-                    "goles_local": 1,
-                    "visitante": "SP. BELGRANO",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "VILLA GENERAL BELGRANO",
-                    "goles_local": 2,
-                    "visitante": "ESTUDIANTES (HERNANDO)",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "NAUTICO RUMIPAL",
-                    "goles_local": 1,
-                    "visitante": "DEP. INDEPENDIENTE",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "TALLERES (BERROTARAN)",
-                    "goles_local": 0,
-                    "visitante": "ATL. ASCASUBI",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "JUVENTUD AGRARIO",
-                    "goles_local": 1,
-                    "visitante": "BELGRANO (BERROTARAN)",
-                    "goles_visitante": 4
-                },
-                {
-                    "local": "VECINOS UNIDOS",
-                    "goles_local": 1,
-                    "visitante": "REC. ELENENSE",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "ATL. ALMAFUERTE",
-                    "goles_local": 5,
-                    "visitante": "DEPORTIVO ITALIANO",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "ATL. INDEPENDIENTE",
-                    "goles_local": 1,
-                    "visitante": "ATL. RIO TERCERO",
-                    "goles_visitante": 2
-                }
-            ],  "FECHA 14": [
-                {
-                    "local": "SP. BELGRANO",
-                    "goles_local": 1,
-                    "visitante": "ATL. INDEPENDIENTE",
-                    "goles_visitante": 2
-                },
-                {
-                    "local": "ATL. RIO TERCERO",
-                    "goles_local": 2,
-                    "visitante": "ATL. ALMAFUERTE",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "DEPORTIVO ITALIANO",
-                    "goles_local": 0,
-                    "visitante": "VECINOS UNIDOS",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "REC. ELENENSE",
-                    "goles_local": 1,
-                    "visitante": "JUVENTUD AGRARIO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "TALLERES (BERROTARAN)",
-                    "goles_local": 1,
-                    "visitante": "BELGRANO (BERROTARAN)",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "ATL. ASCASUBI",
-                    "goles_local": 0,
-                    "visitante": "NAUTICO RUMIPAL",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "DEP. INDEPENDIENTE",
-                    "goles_local": 2,
-                    "visitante": "VILLA GENERAL BELGRANO",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "ESTUDIANTES (HERNANDO)",
-                    "goles_local": 3,
-                    "visitante": "9 DE JULIO (RIO TERCERO)",
-                    "goles_visitante": 2
-                }
-            ], "FECHA 15": [
-                {
-                    "local": "ESTUDIANTES (HERNANDO)",
-                    "goles_local": 3,
-                    "visitante": "SP. BELGRANO",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "9 DE JULIO (RIO TERCERO)",
-                    "goles_local": 3,
-                    "visitante": "DEP. INDEPENDIENTE",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "VILLA GENERAL BELGRANO",
-                    "goles_local": 0,
-                    "visitante": "ATL. ASCASUBI",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "NAUTICO RUMIPAL",
-                    "goles_local": 1,
-                    "visitante": "BELGRANO (BERROTARAN)",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "TALLERES (BERROTARAN)",
-                    "goles_local": 2,
-                    "visitante": "REC. ELENENSE",
-                    "goles_visitante": 1
-                },
-                {
-                    "local": "JUVENTUD AGRARIO",
-                    "goles_local": 4,
-                    "visitante": "DEPORTIVO ITALIANO",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "VECINOS UNIDOS",
-                    "goles_local": 1,
-                    "visitante": "ATL. RIO TERCERO",
-                    "goles_visitante": 0
-                },
-                {
-                    "local": "ATL. ALMAFUERTE",
-                    "goles_local": 1,
-                    "visitante": "ATL. INDEPENDIENTE",
-                    "goles_visitante": 1
-                }
-            ]
-        };
+    "FECHA 1": [
+        {
+            "local": "DEP. INDEPENDIENTE",
+            "goles_local": 1,
+            "visitante": "SP. BELGRANO",
+            "goles_visitante": 0
+        },
+        {
+            "local": "ATL. ASCASUBI",
+            "goles_local": 2,
+            "visitante": "ESTUDIANTES (HERNANDO)",
+            "goles_visitante": 2
+        },
+        {
+            "local": "BELGRANO (BERROTARAN)",
+            "goles_local": 2,
+            "visitante": "9 DE JULIO (RIO TERCERO)",
+            "goles_visitante": 1
+        },
+        {
+            "local": "REC. ELENENSE",
+            "goles_local": 0,
+            "visitante": "VILLA GENERAL BELGRANO",
+            "goles_visitante": 3
+        },
+        {
+            "local": "NAUTICO RUMIPAL",
+            "goles_local": 1,
+            "visitante": "DEPORTIVO ITALIANO",
+            "goles_visitante": 0
+        },
+        {
+            "local": "TALLERES (BERROTARAN)",
+            "goles_local": 0,
+            "visitante": "ATL. RIO TERCERO",
+            "goles_visitante": 0
+        },
+        {
+            "local": "JUVENTUD AGRARIO",
+            "goles_local": 2,
+            "visitante": "ATL. INDEPENDIENTE",
+            "goles_visitante": 2
+        },
+        {
+            "local": "VECINOS UNIDOS",
+            "goles_local": 2,
+            "visitante": "ATL. ALMAFUERTE",
+            "goles_visitante": 3
+        }
+    ],
+    "FECHA 2": [
+        {
+            "local": "VECINOS UNIDOS",
+            "goles_local": 1,
+            "visitante": "SP. BELGRANO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "ATL. ALMAFUERTE",
+            "goles_local": 1,
+            "visitante": "JUVENTUD AGRARIO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "ATL. INDEPENDIENTE",
+            "goles_local": 1,
+            "visitante": "TALLERES (BERROTARAN)",
+            "goles_visitante": 0
+        },
+        {
+            "local": "ATL. RIO TERCERO",
+            "goles_local": 2,
+            "visitante": "NAUTICO RUMIPAL",
+            "goles_visitante": 2
+        },
+        {
+            "local": "DEPORTIVO ITALIANO",
+            "goles_local": 0,
+            "visitante": "VILLA GENERAL BELGRANO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "REC. ELENENSE",
+            "goles_local": 2,
+            "visitante": "9 DE JULIO (RIO TERCERO)",
+            "goles_visitante": 0
+        },
+        {
+            "local": "ESTUDIANTES (HERNANDO)",
+            "goles_local": 0,
+            "visitante": "BELGRANO (BERROTARAN)",
+            "goles_visitante": 2
+        },
+        {
+            "local": "ATL. ASCASUBI",
+            "goles_local": 1,
+            "visitante": "DEP. INDEPENDIENTE",
+            "goles_visitante": 0
+        }
+    ],
+    "FECHA 3": [
+        {
+            "local": "SP. BELGRANO",
+            "goles_local": 3,
+            "visitante": "ATL. ASCASUBI",
+            "goles_visitante": 1
+        },
+        {
+            "local": "DEP. INDEPENDIENTE",
+            "goles_local": 2,
+            "visitante": "BELGRANO (BERROTARAN)",
+            "goles_visitante": 2
+        },
+        {
+            "local": "ESTUDIANTES (HERNANDO)",
+            "goles_local": 0,
+            "visitante": "REC. ELENENSE",
+            "goles_visitante": 1
+        },
+        {
+            "local": "9 DE JULIO (RIO TERCERO)",
+            "goles_local": 3,
+            "visitante": "DEPORTIVO ITALIANO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "VILLA GENERAL BELGRANO",
+            "goles_local": 1,
+            "visitante": "ATL. RIO TERCERO",
+            "goles_visitante": 2
+        },
+        {
+            "local": "NAUTICO RUMIPAL",
+            "goles_local": 2,
+            "visitante": "ATL. INDEPENDIENTE",
+            "goles_visitante": 0
+        },
+        {
+            "local": "TALLERES (BERROTARAN)",
+            "goles_local": 4,
+            "visitante": "ATL. ALMAFUERTE",
+            "goles_visitante": 3
+        },
+        {
+            "local": "JUVENTUD AGRARIO",
+            "goles_local": 2,
+            "visitante": "VECINOS UNIDOS",
+            "goles_visitante": 2
+        }
+    ],
+    "FECHA 4": [
+        {
+            "local": "JUVENTUD AGRARIO",
+            "goles_local": 2,
+            "visitante": "SP. BELGRANO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "VECINOS UNIDOS",
+            "goles_local": 0,
+            "visitante": "TALLERES (BERROTARAN)",
+            "goles_visitante": 0
+        },
+        {
+            "local": "ATL. ALMAFUERTE",
+            "goles_local": 0,
+            "visitante": "NAUTICO RUMIPAL",
+            "goles_visitante": 1
+        },
+        {
+            "local": "ATL. INDEPENDIENTE",
+            "goles_local": 1,
+            "visitante": "VILLA GENERAL BELGRANO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "9 DE JULIO (RIO TERCERO)",
+            "goles_local": 2,
+            "visitante": "ATL. RIO TERCERO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "DEPORTIVO ITALIANO",
+            "goles_local": 0,
+            "visitante": "ESTUDIANTES (HERNANDO)",
+            "goles_visitante": 1
+        },
+        {
+            "local": "REC. ELENENSE",
+            "goles_local": 0,
+            "visitante": "DEP. INDEPENDIENTE",
+            "goles_visitante": 1
+        },
+        {
+            "local": "ATL. ASCASUBI",
+            "goles_local": 2,
+            "visitante": "BELGRANO (BERROTARAN)",
+            "goles_visitante": 3
+        }
+    ],
+    "FECHA 5": [
+        {
+            "local": "SP. BELGRANO",
+            "goles_local": 0,
+            "visitante": "BELGRANO (BERROTARAN)",
+            "goles_visitante": 3
+        },
+        {
+            "local": "ATL. ASCASUBI",
+            "goles_local": 3,
+            "visitante": "REC. ELENENSE",
+            "goles_visitante": 2
+        },
+        {
+            "local": "DEPORTIVO ITALIANO",
+            "goles_local": 1,
+            "visitante": "DEP. INDEPENDIENTE",
+            "goles_visitante": 1
+        },
+        {
+            "local": "ESTUDIANTES (HERNANDO)",
+            "goles_local": 0,
+            "visitante": "ATL. RIO TERCERO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "9 DE JULIO (RIO TERCERO)",
+            "goles_local": 0,
+            "visitante": "ATL. INDEPENDIENTE",
+            "goles_visitante": 0
+        },
+        {
+            "local": "VILLA GENERAL BELGRANO",
+            "goles_local": 0,
+            "visitante": "ATL. ALMAFUERTE",
+            "goles_visitante": 1
+        },
+        {
+            "local": "NAUTICO RUMIPAL",
+            "goles_local": 2,
+            "visitante": "VECINOS UNIDOS",
+            "goles_visitante": 2
+        },
+        {
+            "local": "TALLERES (BERROTARAN)",
+            "goles_local": 1,
+            "visitante": "JUVENTUD AGRARIO",
+            "goles_visitante": 2
+        }
+    ],
+    "FECHA 6": [
+        {
+            "local": "TALLERES (BERROTARAN)",
+            "goles_local": 1,
+            "visitante": "SP. BELGRANO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "NAUTICO RUMIPAL",
+            "goles_local": 0,
+            "visitante": "JUVENTUD AGRARIO",
+            "goles_visitante": 2
+        },
+        {
+            "local": "VECINOS UNIDOS",
+            "goles_local": 0,
+            "visitante": "VILLA GENERAL BELGRANO",
+            "goles_visitante": 2
+        },
+        {
+            "local": "ATL. ALMAFUERTE",
+            "goles_local": 0,
+            "visitante": "9 DE JULIO (RIO TERCERO)",
+            "goles_visitante": 6
+        },
+        {
+            "local": "ESTUDIANTES (HERNANDO)",
+            "goles_local": 0,
+            "visitante": "ATL. INDEPENDIENTE",
+            "goles_visitante": 3
+        },
+        {
+            "local": "ATL. RIO TERCERO",
+            "goles_local": 3,
+            "visitante": "DEP. INDEPENDIENTE",
+            "goles_visitante": 0
+        },
+        {
+            "local": "DEPORTIVO ITALIANO",
+            "goles_local": 1,
+            "visitante": "ATL. ASCASUBI",
+            "goles_visitante": 3
+        },
+        {
+            "local": "BELGRANO (BERROTARAN)",
+            "goles_local": 1,
+            "visitante": "REC. ELENENSE",
+            "goles_visitante": 1
+        }
+    ],
+    "FECHA 7": [
+        {
+            "local": "SP. BELGRANO",
+            "goles_local": 1,
+            "visitante": "REC. ELENENSE",
+            "goles_visitante": 3
+        },
+        {
+            "local": "BELGRANO (BERROTARAN)",
+            "goles_local": 3,
+            "visitante": "DEPORTIVO ITALIANO",
+            "goles_visitante": 2
+        },
+        {
+            "local": "ATL. ASCASUBI",
+            "goles_local": 0,
+            "visitante": "ATL. RIO TERCERO",
+            "goles_visitante": 0
+        },
+        {
+            "local": "DEP. INDEPENDIENTE",
+            "goles_local": 3,
+            "visitante": "ATL. INDEPENDIENTE",
+            "goles_visitante": 2
+        },
+        {
+            "local": "ESTUDIANTES (HERNANDO)",
+            "goles_local": 3,
+            "visitante": "ATL. ALMAFUERTE",
+            "goles_visitante": 1
+        },
+        {
+            "local": "9 DE JULIO (RIO TERCERO)",
+            "goles_local": 1,
+            "visitante": "VECINOS UNIDOS",
+            "goles_visitante": 1
+        },
+        {
+            "local": "VILLA GENERAL BELGRANO",
+            "goles_local": 0,
+            "visitante": "JUVENTUD AGRARIO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "NAUTICO RUMIPAL",
+            "goles_local": 2,
+            "visitante": "TALLERES (BERROTARAN)",
+            "goles_visitante": 2
+        }
+    ],
+    "FECHA 8": [
+        {
+            "local": "NAUTICO RUMIPAL",
+            "goles_local": 4,
+            "visitante": "SP. BELGRANO",
+            "goles_visitante": 3
+        },
+        {
+            "local": "TALLERES (BERROTARAN)",
+            "goles_local": 3,
+            "visitante": "VILLA GENERAL BELGRANO",
+            "goles_visitante": 2
+        },
+        {
+            "local": "JUVENTUD AGRARIO",
+            "goles_local": 0,
+            "visitante": "9 DE JULIO (RIO TERCERO)",
+            "goles_visitante": 1
+        },
+        {
+            "local": "VECINOS UNIDOS",
+            "goles_local": 3,
+            "visitante": "ESTUDIANTES (HERNANDO)",
+            "goles_visitante": 1
+        },
+        {
+            "local": "ATL. ALMAFUERTE",
+            "goles_local": 2,
+            "visitante": "DEP. INDEPENDIENTE",
+            "goles_visitante": 2
+        },
+        {
+            "local": "ATL. INDEPENDIENTE",
+            "goles_local": 1,
+            "visitante": "ATL. ASCASUBI",
+            "goles_visitante": 1
+        },
+        {
+            "local": "ATL. RIO TERCERO",
+            "goles_local": 2,
+            "visitante": "BELGRANO (BERROTARAN)",
+            "goles_visitante": 1
+        },
+        {
+            "local": "DEPORTIVO ITALIANO",
+            "goles_local": 1,
+            "visitante": "REC. ELENENSE",
+            "goles_visitante": 3
+        }
+    ],
+    "FECHA 9": [
+        {
+            "local": "SP. BELGRANO",
+            "goles_local": 1,
+            "visitante": "DEPORTIVO ITALIANO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "REC. ELENENSE",
+            "goles_local": 1,
+            "visitante": "ATL. RIO TERCERO",
+            "goles_visitante": 3
+        },
+        {
+            "local": "BELGRANO (BERROTARAN)",
+            "goles_local": 2,
+            "visitante": "ATL. INDEPENDIENTE",
+            "goles_visitante": 0
+        },
+        {
+            "local": "ATL. ASCASUBI",
+            "goles_local": 1,
+            "visitante": "ATL. ALMAFUERTE",
+            "goles_visitante": 3
+        },
+        {
+            "local": "DEP. INDEPENDIENTE",
+            "goles_local": 1,
+            "visitante": "VECINOS UNIDOS",
+            "goles_visitante": 1
+        },
+        {
+            "local": "ESTUDIANTES (HERNANDO)",
+            "goles_local": 1,
+            "visitante": "JUVENTUD AGRARIO",
+            "goles_visitante": 0
+        },
+        {
+            "local": "9 DE JULIO (RIO TERCERO)",
+            "goles_local": 0,
+            "visitante": "TALLERES (BERROTARAN)",
+            "goles_visitante": 1
+        },
+        {
+            "local": "VILLA GENERAL BELGRANO",
+            "goles_local": 1,
+            "visitante": "NAUTICO RUMIPAL",
+            "goles_visitante": 1
+        }
+    ],
+    "FECHA 10": [
+        {
+            "local": "VILLA GENERAL BELGRANO",
+            "goles_local": 0,
+            "visitante": "SP. BELGRANO",
+            "goles_visitante": 2
+        },
+        {
+            "local": "NAUTICO RUMIPAL",
+            "goles_local": 1,
+            "visitante": "9 DE JULIO (RIO TERCERO)",
+            "goles_visitante": 0
+        },
+        {
+            "local": "TALLERES (BERROTARAN)",
+            "goles_local": 3,
+            "visitante": "ESTUDIANTES (HERNANDO)",
+            "goles_visitante": 0
+        },
+        {
+            "local": "DEP. INDEPENDIENTE",
+            "goles_local": 1,
+            "visitante": "JUVENTUD AGRARIO",
+            "goles_visitante": 2
+        },
+        {
+            "local": "VECINOS UNIDOS",
+            "goles_local": 2,
+            "visitante": "ATL. ASCASUBI",
+            "goles_visitante": 2
+        },
+        {
+            "local": "ATL. ALMAFUERTE",
+            "goles_local": 2,
+            "visitante": "BELGRANO (BERROTARAN)",
+            "goles_visitante": 1
+        },
+        {
+            "local": "ATL. INDEPENDIENTE",
+            "goles_local": 2,
+            "visitante": "REC. ELENENSE",
+            "goles_visitante": 0
+        },
+        {
+            "local": "ATL. RIO TERCERO",
+            "goles_local": 2,
+            "visitante": "DEPORTIVO ITALIANO",
+            "goles_visitante": 0
+        }
+    ],
+    "FECHA 11": [
+        {
+            "local": "ATL. INDEPENDIENTE",
+            "goles_local": 0,
+            "visitante": "ESTUDIANTES (HERNANDO)",
+            "goles_visitante": 0
+        },
+        {
+            "local": "ATL. RIO TERCERO",
+            "goles_local": 1,
+            "visitante": "9 DE JULIO (RIO TERCERO)",
+            "goles_visitante": 2
+        },
+        {
+            "local": "VILLA GENERAL BELGRANO",
+            "goles_local": 1,
+            "visitante": "DEPORTIVO ITALIANO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "REC. ELENENSE",
+            "goles_local": 3,
+            "visitante": "NAUTICO RUMIPAL",
+            "goles_visitante": 0
+        },
+        {
+            "local": "BELGRANO (BERROTARAN)",
+            "goles_local": 0,
+            "visitante": "TALLERES (BERROTARAN)",
+            "goles_visitante": 3
+        },
+        {
+            "local": "ATL. ASCASUBI",
+            "goles_local": 1,
+            "visitante": "JUVENTUD AGRARIO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "VECINOS UNIDOS",
+            "goles_local": 2,
+            "visitante": "DEP. INDEPENDIENTE",
+            "goles_visitante": 2
+        },
+        {
+            "local": "ATL. ALMAFUERTE",
+            "goles_local": 0,
+            "visitante": "SP. BELGRANO",
+            "goles_visitante": 1
+        }
+    ],
+    "FECHA 12": [
+        {
+            "local": "SP. BELGRANO",
+            "goles_local": 4,
+            "visitante": "ATL. RIO TERCERO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "DEPORTIVO ITALIANO",
+            "goles_local": 1,
+            "visitante": "ATL. INDEPENDIENTE",
+            "goles_visitante": 0
+        },
+        {
+            "local": "REC. ELENENSE",
+            "goles_local": 2,
+            "visitante": "ATL. ALMAFUERTE",
+            "goles_visitante": 0
+        },
+        {
+            "local": "BELGRANO (BERROTARAN)",
+            "goles_local": 2,
+            "visitante": "VECINOS UNIDOS",
+            "goles_visitante": 2
+        },
+        {
+            "local": "JUVENTUD AGRARIO",
+            "goles_local": 4,
+            "visitante": "ATL. ASCASUBI",
+            "goles_visitante": 1
+        },
+        {
+            "local": "DEP. INDEPENDIENTE",
+            "goles_local": 1,
+            "visitante": "TALLERES (BERROTARAN)",
+            "goles_visitante": 1
+        },
+        {
+            "local": "ESTUDIANTES (HERNANDO)",
+            "goles_local": 1,
+            "visitante": "NAUTICO RUMIPAL",
+            "goles_visitante": 0
+        },
+        {
+            "local": "9 DE JULIO (RIO TERCERO)",
+            "goles_local": 1,
+            "visitante": "VILLA GENERAL BELGRANO",
+            "goles_visitante": 1
+        }
+    ],
+    "FECAH 13": [
+        {
+            "local": "9 DE JULIO (RIO TERCERO)",
+            "goles_local": 1,
+            "visitante": "SP. BELGRANO",
+            "goles_visitante": 2
+        },
+        {
+            "local": "VILLA GENERAL BELGRANO",
+            "goles_local": 2,
+            "visitante": "ESTUDIANTES (HERNANDO)",
+            "goles_visitante": 0
+        },
+        {
+            "local": "NAUTICO RUMIPAL",
+            "goles_local": 1,
+            "visitante": "DEP. INDEPENDIENTE",
+            "goles_visitante": 2
+        },
+        {
+            "local": "TALLERES (BERROTARAN)",
+            "goles_local": 0,
+            "visitante": "ATL. ASCASUBI",
+            "goles_visitante": 0
+        },
+        {
+            "local": "JUVENTUD AGRARIO",
+            "goles_local": 1,
+            "visitante": "BELGRANO (BERROTARAN)",
+            "goles_visitante": 4
+        },
+        {
+            "local": "VECINOS UNIDOS",
+            "goles_local": 1,
+            "visitante": "REC. ELENENSE",
+            "goles_visitante": 1
+        },
+        {
+            "local": "ATL. ALMAFUERTE",
+            "goles_local": 5,
+            "visitante": "DEPORTIVO ITALIANO",
+            "goles_visitante": 2
+        },
+        {
+            "local": "ATL. INDEPENDIENTE",
+            "goles_local": 1,
+            "visitante": "ATL. RIO TERCERO",
+            "goles_visitante": 2
+        }
+    ], "FECHA 14": [
+        {
+            "local": "SP. BELGRANO",
+            "goles_local": 1,
+            "visitante": "ATL. INDEPENDIENTE",
+            "goles_visitante": 2
+        },
+        {
+            "local": "ATL. RIO TERCERO",
+            "goles_local": 2,
+            "visitante": "ATL. ALMAFUERTE",
+            "goles_visitante": 1
+        },
+        {
+            "local": "DEPORTIVO ITALIANO",
+            "goles_local": 0,
+            "visitante": "VECINOS UNIDOS",
+            "goles_visitante": 1
+        },
+        {
+            "local": "REC. ELENENSE",
+            "goles_local": 1,
+            "visitante": "JUVENTUD AGRARIO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "TALLERES (BERROTARAN)",
+            "goles_local": 1,
+            "visitante": "BELGRANO (BERROTARAN)",
+            "goles_visitante": 0
+        },
+        {
+            "local": "ATL. ASCASUBI",
+            "goles_local": 0,
+            "visitante": "NAUTICO RUMIPAL",
+            "goles_visitante": 1
+        },
+        {
+            "local": "DEP. INDEPENDIENTE",
+            "goles_local": 2,
+            "visitante": "VILLA GENERAL BELGRANO",
+            "goles_visitante": 1
+        },
+        {
+            "local": "ESTUDIANTES (HERNANDO)",
+            "goles_local": 3,
+            "visitante": "9 DE JULIO (RIO TERCERO)",
+            "goles_visitante": 2
+        }
+    ], "FECHA 15": [
+        {
+            "local": "ESTUDIANTES (HERNANDO)",
+            "goles_local": 3,
+            "visitante": "SP. BELGRANO",
+            "goles_visitante": 0
+        },
+        {
+            "local": "9 DE JULIO (RIO TERCERO)",
+            "goles_local": 3,
+            "visitante": "DEP. INDEPENDIENTE",
+            "goles_visitante": 1
+        },
+        {
+            "local": "VILLA GENERAL BELGRANO",
+            "goles_local": 0,
+            "visitante": "ATL. ASCASUBI",
+            "goles_visitante": 1
+        },
+        {
+            "local": "NAUTICO RUMIPAL",
+            "goles_local": 1,
+            "visitante": "BELGRANO (BERROTARAN)",
+            "goles_visitante": 1
+        },
+        {
+            "local": "TALLERES (BERROTARAN)",
+            "goles_local": 2,
+            "visitante": "REC. ELENENSE",
+            "goles_visitante": 1
+        },
+        {
+            "local": "JUVENTUD AGRARIO",
+            "goles_local": 4,
+            "visitante": "DEPORTIVO ITALIANO",
+            "goles_visitante": 0
+        },
+        {
+            "local": "VECINOS UNIDOS",
+            "goles_local": 1,
+            "visitante": "ATL. RIO TERCERO",
+            "goles_visitante": 0
+        },
+        {
+            "local": "ATL. ALMAFUERTE",
+            "goles_local": 1,
+            "visitante": "ATL. INDEPENDIENTE",
+            "goles_visitante": 1
+        }
+    ]
+};
 
-        const fechasEditables = {
-           
-            "FECHA 16": [
-                {
-                    "local": "SP. BELGRANO",
-                    "goles_local": "",
-                    "visitante": "ATL. ALMAFUERTE",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "ATL. INDEPENDIENTE",
-                    "goles_local": "",
-                    "visitante": "VECINOS UNIDOS",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "ATL. RIO TERCERO",
-                    "goles_local": "",
-                    "visitante": "JUVENTUD AGRARIO",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "DEPORTIVO ITALIANO",
-                    "goles_local": "",
-                    "visitante": "TALLERES (BERROTARAN)",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "NAUTICO RUMIPAL",
-                    "goles_local": "",
-                    "visitante": "REC. ELENENSE",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "BELGRANO (BERROTARAN)",
-                    "goles_local": "",
-                    "visitante": "VILLA GENERAL BELGRANO",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "ATL. ASCASUBI",
-                    "goles_local": "",
-                    "visitante": "9 DE JULIO (RIO TERCERO)",
-                    "goles_visitante": ""
-                },
-                {
-                    "local": "DEP. INDEPENDIENTE",
-                    "goles_local": "",
-                    "visitante": "ESTUDIANTES (HERNANDO)",
-                    "goles_visitante": ""
-                }
-            ]
-        };
+const fechasEditables = {
 
-        const equipos = [
-            "9 DE JULIO (RIO TERCERO)",
-            "ATL. ALMAFUERTE",
-            "ATL. ASCASUBI",
-            "ATL. INDEPENDIENTE",
-            "ATL. RIO TERCERO",
-            "BELGRANO (BERROTARAN)",
-            "DEP. INDEPENDIENTE",
-            "DEPORTIVO ITALIANO",
-            "ESTUDIANTES (HERNANDO)",
-            "JUVENTUD AGRARIO",
-            "NAUTICO RUMIPAL",
-            "REC. ELENENSE",
-            "SP. BELGRANO",
-            "TALLERES (BERROTARAN)",
-            "VECINOS UNIDOS",
-            "VILLA GENERAL BELGRANO"
-        ];
+    "FECHA 16": [
+        {
+            "local": "SP. BELGRANO",
+            "goles_local": "",
+            "visitante": "ATL. ALMAFUERTE",
+            "goles_visitante": ""
+        },
+        {
+            "local": "ATL. INDEPENDIENTE",
+            "goles_local": "",
+            "visitante": "VECINOS UNIDOS",
+            "goles_visitante": ""
+        },
+        {
+            "local": "ATL. RIO TERCERO",
+            "goles_local": "",
+            "visitante": "JUVENTUD AGRARIO",
+            "goles_visitante": ""
+        },
+        {
+            "local": "DEPORTIVO ITALIANO",
+            "goles_local": "",
+            "visitante": "TALLERES (BERROTARAN)",
+            "goles_visitante": ""
+        },
+        {
+            "local": "NAUTICO RUMIPAL",
+            "goles_local": "",
+            "visitante": "REC. ELENENSE",
+            "goles_visitante": ""
+        },
+        {
+            "local": "BELGRANO (BERROTARAN)",
+            "goles_local": "",
+            "visitante": "VILLA GENERAL BELGRANO",
+            "goles_visitante": ""
+        },
+        {
+            "local": "ATL. ASCASUBI",
+            "goles_local": "",
+            "visitante": "9 DE JULIO (RIO TERCERO)",
+            "goles_visitante": ""
+        },
+        {
+            "local": "DEP. INDEPENDIENTE",
+            "goles_local": "",
+            "visitante": "ESTUDIANTES (HERNANDO)",
+            "goles_visitante": ""
+        }
+    ]
+};
 
-        const tablaPosiciones = {};
-        equipos.forEach(equipo => {
-            tablaPosiciones[equipo] = { PJ: 0, Pts: 0, PG: 0, PE: 0, PP: 0, GF: 0, GC: 0 };
-        });
+const equipos = [
+    "9 DE JULIO (RIO TERCERO)",
+    "ATL. ALMAFUERTE",
+    "ATL. ASCASUBI",
+    "ATL. INDEPENDIENTE",
+    "ATL. RIO TERCERO",
+    "BELGRANO (BERROTARAN)",
+    "DEP. INDEPENDIENTE",
+    "DEPORTIVO ITALIANO",
+    "ESTUDIANTES (HERNANDO)",
+    "JUVENTUD AGRARIO",
+    "NAUTICO RUMIPAL",
+    "REC. ELENENSE",
+    "SP. BELGRANO",
+    "TALLERES (BERROTARAN)",
+    "VECINOS UNIDOS",
+    "VILLA GENERAL BELGRANO"
+];
 
-        function renderFechasFijas() {
-            const container = document.getElementById("fechas-fijas");
-            for (const fecha in fechasFijas) {
-                const card = document.createElement("div");
-                card.innerHTML = `<h3 class="text-lg font-bold mb-2">${fecha}</h3>`;
-                fechasFijas[fecha].forEach(partido => {
-                    card.innerHTML += `
+const tablaPosiciones = {};
+const criteriosAplicados = [];
+const explicacionesDesempate = [];
+
+equipos.forEach(equipo => {
+    tablaPosiciones[equipo] = { PJ: 0, Pts: 0, PG: 0, PE: 0, PP: 0, GF: 0, GC: 0 };
+});
+
+function renderFechasFijas() {
+    const container = document.getElementById("fechas-fijas");
+    for (const fecha in fechasFijas) {
+        const card = document.createElement("div");
+        card.innerHTML = `<h3 class="text-lg font-bold mb-2">${fecha}</h3>`;
+        fechasFijas[fecha].forEach(partido => {
+            card.innerHTML += `
                     <div class="match flex justify-between items-center">
                         <span class="text-sm md:text-base truncate">${partido.local}</span>
                         <span class="font-bold text-lg">${partido.goles_local} - ${partido.goles_visitante}</span>
                         <span class="text-sm md:text-base truncate">${partido.visitante}</span>
                     </div>`;
-                });
-                container.appendChild(card);
-            }
-        }
+        });
+        container.appendChild(card);
+    }
+}
 
-        function renderFechasEditables() {
-            const container = document.getElementById("fechas-editables");
-            for (const fecha in fechasEditables) {
-                const card = document.createElement("div");
-                card.innerHTML = `<h3 class="text-lg font-bold mb-2">${fecha}</h3>`;
-                fechasEditables[fecha].forEach((partido, index) => {
-                    card.innerHTML += `
+function renderFechasEditables() {
+    const container = document.getElementById("fechas-editables");
+    for (const fecha in fechasEditables) {
+        const card = document.createElement("div");
+        card.innerHTML = `<h3 class="text-lg font-bold mb-2">${fecha}</h3>`;
+        fechasEditables[fecha].forEach((partido, index) => {
+            card.innerHTML += `
                     <div class="match flex justify-between items-center">
                         <span class="text-sm md:text-base truncate">${partido.local}</span>
                         <input type="text" inputmode="numeric" pattern="[0-9]*" min="0" value="${partido.goles_local === "" ? "" : partido.goles_local}" 
@@ -872,72 +875,72 @@ const fechasFijas = {
                             onchange="updateResultado('${fecha}', ${index}, 'visitante', this.value)">
                         <span class="text-sm md:text-base truncate">${partido.visitante}</span>
                     </div>`;
-                });
-                container.appendChild(card);
+        });
+        container.appendChild(card);
+    }
+}
+
+function updateResultado(fecha, index, equipo, value) {
+    const val = value === "" ? "" : Math.max(0, parseInt(value));
+
+    if (equipo === "local") {
+        fechasEditables[fecha][index].goles_local = val;
+
+        if (fechasEditables[fecha][index].goles_visitante === "") {
+            fechasEditables[fecha][index].goles_visitante = 0;
+            actualizarInputVisible(fecha, index, "visitante", 0);
+        }
+    } else {
+        fechasEditables[fecha][index].goles_visitante = val;
+
+        if (fechasEditables[fecha][index].goles_local === "") {
+            fechasEditables[fecha][index].goles_local = 0;
+            actualizarInputVisible(fecha, index, "local", 0);
+        }
+    }
+
+    calcularTabla();
+}
+
+function actualizarInputVisible(fecha, index, equipo, valor) {
+    document.querySelectorAll(".fecha-card").forEach(card => {
+        const titulo = card.querySelector("h3").innerText;
+        if (titulo === fecha) {
+            const filas = card.querySelectorAll("tbody tr");
+            const fila = filas[index];
+            if (fila) {
+                const inputs = fila.querySelectorAll("input[type='number']");
+                if (equipo === "local") {
+                    inputs[0].value = valor;
+                } else {
+                    inputs[1].value = valor;
+                }
             }
         }
-
-        function updateResultado(fecha, index, equipo, value) {
-            const val = value === "" ? "" : Math.max(0, parseInt(value));
-
-            if (equipo === "local") {
-                fechasEditables[fecha][index].goles_local = val;
-
-                if (fechasEditables[fecha][index].goles_visitante === "") {
-                    fechasEditables[fecha][index].goles_visitante = 0;
-                    actualizarInputVisible(fecha, index, "visitante", 0);
-                }
-            } else {
-                fechasEditables[fecha][index].goles_visitante = val;
-
-                if (fechasEditables[fecha][index].goles_local === "") {
-                    fechasEditables[fecha][index].goles_local = 0;
-                    actualizarInputVisible(fecha, index, "local", 0);
-                }
-            }
-
-            calcularTabla();
-        }
-
-        function actualizarInputVisible(fecha, index, equipo, valor) {
-            document.querySelectorAll(".fecha-card").forEach(card => {
-                const titulo = card.querySelector("h3").innerText;
-                if (titulo === fecha) {
-                    const filas = card.querySelectorAll("tbody tr");
-                    const fila = filas[index];
-                    if (fila) {
-                        const inputs = fila.querySelectorAll("input[type='number']");
-                        if (equipo === "local") {
-                            inputs[0].value = valor;
-                        } else {
-                            inputs[1].value = valor;
-                        }
-                    }
-                }
-            });
-        }
+    });
+}
 
 
-        function renderFixture(filtroEquipo = "TODOS") {
-            
-            const container = document.getElementById("fixture");
-            container.innerHTML = "";
+function renderFixture(filtroEquipo = "TODOS") {
 
-            
+    const container = document.getElementById("fixture");
+    container.innerHTML = "";
 
-            function renderFecha(fechaNombre, partidos, editable = false) {
-                const partidosFiltrados = partidos.filter(p =>
-                    filtroEquipo === "TODOS" ||
-                    p.local === filtroEquipo ||
-                    p.visitante === filtroEquipo
-                );
-                if (partidosFiltrados.length === 0) return; // No renderizar si no hay partidos
 
-                const card = document.createElement("div");
-                card.className = "fecha-card";
-                card.innerHTML = `<h3 class="text-lg font-bold mb-2">${fechaNombre}</h3>`;
 
-                let tableHTML = `
+    function renderFecha(fechaNombre, partidos, editable = false) {
+        const partidosFiltrados = partidos.filter(p =>
+            filtroEquipo === "TODOS" ||
+            p.local === filtroEquipo ||
+            p.visitante === filtroEquipo
+        );
+        if (partidosFiltrados.length === 0) return; // No renderizar si no hay partidos
+
+        const card = document.createElement("div");
+        card.className = "fecha-card";
+        card.innerHTML = `<h3 class="text-lg font-bold mb-2">${fechaNombre}</h3>`;
+
+        let tableHTML = `
     <table class="w-full table-fixed">
         <thead>
             <tr>
@@ -952,11 +955,11 @@ const fechasFijas = {
         <tbody>`;
 
 
-                partidosFiltrados.forEach((partido, index) => {
-                    let resultadoHTML = "";
+        partidosFiltrados.forEach((partido, index) => {
+            let resultadoHTML = "";
 
-                    if (editable) {
-                        resultadoHTML = `
+            if (editable) {
+                resultadoHTML = `
                     <input type="text" inputmode="numeric" pattern="[0-9]*" min="0" value="${partido.goles_local === "" ? "" : partido.goles_local}" 
                         onchange="updateResultado('${fechaNombre}', ${index}, 'local', this.value)"
                         style="width: 40px; text-align: center;"> 
@@ -964,11 +967,11 @@ const fechasFijas = {
                     <input type="text" inputmode="numeric" pattern="[0-9]*" min="0" value="${partido.goles_visitante === "" ? "" : partido.goles_visitante}" 
                         onchange="updateResultado('${fechaNombre}', ${index}, 'visitante', this.value)"
                         style="width: 40px; text-align: center;">`;
-                    } else {
-                        resultadoHTML = `<span class="font-bold text-base">${partido.goles_local} - ${partido.goles_visitante}</span>`;
-                    }
+            } else {
+                resultadoHTML = `<span class="font-bold text-base">${partido.goles_local} - ${partido.goles_visitante}</span>`;
+            }
 
-                    tableHTML += `
+            tableHTML += `
                 <tr>
                     <td>
                         <div class="flex items-center justify-end gap-2">
@@ -989,89 +992,587 @@ const fechasFijas = {
                         </div>
                     </td>
                 </tr>`;
+        });
+
+        tableHTML += `</tbody></table>`;
+        card.innerHTML += tableHTML;
+        container.appendChild(card);
+    }
+
+    for (const fecha in fechasFijas) {
+        renderFecha(fecha, fechasFijas[fecha]);
+    }
+
+    for (const fecha in fechasEditables) {
+        renderFecha(fecha, fechasEditables[fecha], true);
+    }
+}
+
+
+function calcularTabla() {
+    for (const equipo in tablaPosiciones) {
+        tablaPosiciones[equipo] = { PJ: 0, Pts: 0, PG: 0, PE: 0, PP: 0, GF: 0, GC: 0 };
+    }
+
+    for (const fecha in fechasFijas) {
+        fechasFijas[fecha].forEach(p => procesarPartido(p));
+    }
+
+    for (const fecha in fechasEditables) {
+        fechasEditables[fecha].forEach(p => {
+            if (p.goles_local !== "" && p.goles_visitante !== "") {
+                procesarPartido(p);
+            }
+        });
+    }
+
+    renderTabla();
+}
+
+function procesarPartido(p) {
+    const local = p.local;
+    const visitante = p.visitante;
+    const gl = parseInt(p.goles_local);
+    const gv = parseInt(p.goles_visitante);
+
+    tablaPosiciones[local].PJ++;
+    tablaPosiciones[visitante].PJ++;
+
+    tablaPosiciones[local].GF += gl;
+    tablaPosiciones[local].GC += gv;
+    tablaPosiciones[visitante].GF += gv;
+    tablaPosiciones[visitante].GC += gl;
+
+    if (gl > gv) {
+        tablaPosiciones[local].PG++;
+        tablaPosiciones[visitante].PP++;
+        tablaPosiciones[local].Pts += 3;
+    } else if (gl < gv) {
+        tablaPosiciones[visitante].PG++;
+        tablaPosiciones[local].PP++;
+        tablaPosiciones[visitante].Pts += 3;
+    } else {
+        tablaPosiciones[local].PE++;
+        tablaPosiciones[visitante].PE++;
+        tablaPosiciones[local].Pts += 1;
+        tablaPosiciones[visitante].Pts += 1;
+    }
+}
+
+function obtenerResultadosEntre(equipoA, equipoB) {
+    const todasFechas = { ...fechasFijas, ...fechasEditables };
+    const resultados = [];
+
+    for (const fecha in todasFechas) {
+        todasFechas[fecha].forEach(p => {
+            if ((p.local === equipoA && p.visitante === equipoB) || (p.local === equipoB && p.visitante === equipoA)) {
+                resultados.push({
+                    equipo: p.local,
+                    rival: p.visitante,
+                    gf: parseInt(p.goles_local),
+                    gc: parseInt(p.goles_visitante),
+                    puntos: p.goles_local > p.goles_visitante ? 3 : (p.goles_local === p.goles_visitante ? 1 : 0)
                 });
-
-                tableHTML += `</tbody></table>`;
-                card.innerHTML += tableHTML;
-                container.appendChild(card);
-            }
-
-            for (const fecha in fechasFijas) {
-                renderFecha(fecha, fechasFijas[fecha]);
-            }
-
-            for (const fecha in fechasEditables) {
-                renderFecha(fecha, fechasEditables[fecha], true);
-            }
-        }
-
-
-        function calcularTabla() {
-            for (const equipo in tablaPosiciones) {
-                tablaPosiciones[equipo] = { PJ: 0, Pts: 0, PG: 0, PE: 0, PP: 0, GF: 0, GC: 0 };
-            }
-
-            for (const fecha in fechasFijas) {
-                fechasFijas[fecha].forEach(p => procesarPartido(p));
-            }
-
-            for (const fecha in fechasEditables) {
-                fechasEditables[fecha].forEach(p => {
-                    if (p.goles_local !== "" && p.goles_visitante !== "") {
-                        procesarPartido(p);
-                    }
+                resultados.push({
+                    equipo: p.visitante,
+                    rival: p.local,
+                    gf: parseInt(p.goles_visitante),
+                    gc: parseInt(p.goles_local),
+                    puntos: p.goles_visitante > p.goles_local ? 3 : (p.goles_visitante === p.goles_local ? 1 : 0)
                 });
             }
+        });
+    }
 
-            renderTabla();
-        }
+    return resultados;
+}
 
-        function procesarPartido(p) {
-            const local = p.local;
-            const visitante = p.visitante;
+function obtenerTop7Equipos(ignorando = []) {
+    const todos = Object.keys(tablaPosiciones)
+        .filter(e => !ignorando.includes(e))
+        .map(e => ({ nombre: e, ...tablaPosiciones[e] }));
+
+    todos.sort((a, b) => b.Pts - a.Pts);
+    return todos.slice(0, 7).map(e => e.nombre);
+}
+
+function obtenerPuntosContra(equipo, rivales) {
+    let puntos = 0;
+    const todasFechas = { ...fechasFijas, ...fechasEditables };
+
+    for (const fecha in todasFechas) {
+        todasFechas[fecha].forEach(p => {
             const gl = parseInt(p.goles_local);
             const gv = parseInt(p.goles_visitante);
 
-            tablaPosiciones[local].PJ++;
-            tablaPosiciones[visitante].PJ++;
+            // Ignorar partidos sin goles cargados
+            if (isNaN(gl) || isNaN(gv)) return;
 
-            tablaPosiciones[local].GF += gl;
-            tablaPosiciones[local].GC += gv;
-            tablaPosiciones[visitante].GF += gv;
-            tablaPosiciones[visitante].GC += gl;
+            if (p.local === equipo && rivales.includes(p.visitante)) {
+                const resultado = gl > gv ? 3 : (gl === gv ? 1 : 0);
+                puntos += resultado;
+            } else if (p.visitante === equipo && rivales.includes(p.local)) {
+                const resultado = gv > gl ? 3 : (gv === gl ? 1 : 0);
+                puntos += resultado;
+            }
+        });
+    }
 
-            if (gl > gv) {
-                tablaPosiciones[local].PG++;
-                tablaPosiciones[visitante].PP++;
-                tablaPosiciones[local].Pts += 3;
-            } else if (gl < gv) {
-                tablaPosiciones[visitante].PG++;
-                tablaPosiciones[local].PP++;
-                tablaPosiciones[visitante].Pts += 3;
+    return puntos;
+}
+
+
+
+function sumarPuntos(resultados, equipo) {
+    return resultados.filter(r => r.equipo === equipo).reduce((sum, r) => sum + r.puntos, 0);
+}
+
+function sumarGolesAFavor(resultados, equipo) {
+    return resultados.filter(r => r.equipo === equipo).reduce((sum, r) => sum + r.gf, 0);
+}
+
+function sumarGolesEnContra(resultados, equipo) {
+    return resultados.filter(r => r.equipo === equipo).reduce((sum, r) => sum + r.gc, 0);
+}
+
+
+function compararEquipos(a, b) {
+    const equipoA = tablaPosiciones[a];
+    const equipoB = tablaPosiciones[b];
+
+
+    if (equipoB.Pts !== equipoA.Pts) {
+        return equipoB.Pts - equipoA.Pts;
+    }
+
+    // 2.1
+    const resultadosMutuos = obtenerResultadosEntre(a, b);
+    const puntosA = sumarPuntos(resultadosMutuos, a);
+    const puntosB = sumarPuntos(resultadosMutuos, b);
+    if (puntosA !== puntosB) {
+        criteriosAplicados.push({ equipos: [a, b], criterio: "2.1: Mayor puntaje entre sí" });
+        return puntosB - puntosA;
+    }
+
+    // 2.2
+    const top7 = obtenerTop7Equipos([a, b]);
+    const puntosVsTop7A = obtenerPuntosContra(a, top7);
+    const puntosVsTop7B = obtenerPuntosContra(b, top7);
+    if (puntosVsTop7A !== puntosVsTop7B) {
+        criteriosAplicados.push({ equipos: [a, b], criterio: "2.2: Puntaje contra equipos del 1 al 7" });
+        return puntosVsTop7B - puntosVsTop7A;
+    }
+
+    // 2.3
+    const golesAFavorA = sumarGolesAFavor(resultadosMutuos, a);
+    const golesAFavorB = sumarGolesAFavor(resultadosMutuos, b);
+    if (golesAFavorA !== golesAFavorB) {
+        criteriosAplicados.push({ equipos: [a, b], criterio: "2.3: Goles a favor entre sí" });
+        return golesAFavorB - golesAFavorA;
+    }
+
+    // 2.4
+    const golesEnContraA = sumarGolesEnContra(resultadosMutuos, a);
+    const golesEnContraB = sumarGolesEnContra(resultadosMutuos, b);
+    if (golesEnContraA !== golesEnContraB) {
+        criteriosAplicados.push({ equipos: [a, b], criterio: "2.4: Goles en contra entre sí" });
+        return golesEnContraA - golesEnContraB;
+    }
+
+    // 2.5
+    if (equipoA.GC !== equipoB.GC) {
+        criteriosAplicados.push({ equipos: [a, b], criterio: "2.5: Goles en contra en el campeonato" });
+        return equipoA.GC - equipoB.GC;
+    }
+
+    // 2.6
+    if (equipoA.GF !== equipoB.GF) {
+        criteriosAplicados.push({ equipos: [a, b], criterio: "2.6: Goles a favor en el campeonato" });
+        return equipoB.GF - equipoA.GF;
+    }
+
+
+}
+
+function renderExplicacionDesempate(equiposOrdenados) {
+    if (criteriosAplicados.length === 0) {
+        document.getElementById("explicacion-desempate").innerHTML = "";
+        return;
+    }
+
+    // Solo mostrar si alguno de los equipos involucrados está del 1° al 7°
+    const top7 = equiposOrdenados.slice(0, 7);
+    const desempatesTop7 = criteriosAplicados.filter(({ equipos }) =>
+        equipos.some(e => top7.includes(e))
+    );
+
+    if (desempatesTop7.length === 0) {
+        document.getElementById("explicacion-desempate").innerHTML = "";
+        return;
+    }
+
+    let explicacion = `<strong>Desempates aplicados (solo del 1° al 7°):</strong><ul class="list-disc pl-5 mt-2">`;
+
+    desempatesTop7.forEach(({ equipos, criterio }) => {
+        const [a, b] = equipos;
+        explicacion += `<li><b>${a}</b> vs <b>${b}</b>: ${criterio}</li>`;
+    });
+
+    explicacion += `</ul>`;
+    document.getElementById("explicacion-desempate").innerHTML = explicacion;
+    console.log("Criterios aplicados:", criteriosAplicados);
+}
+
+//
+
+
+
+function limpiarResultadosFechas() {
+    ["FECHA 16"].forEach(fecha => {
+        fechasEditables[fecha].forEach((partido, index) => {
+            partido.goles_local = "";
+            partido.goles_visitante = "";
+        });
+    });
+
+    // Vaciar los inputs visibles
+    document.querySelectorAll(".fecha-card").forEach(card => {
+        const titulo = card.querySelector("h3").innerText;
+        if (["FECHA 16"].includes(titulo)) {
+            card.querySelectorAll("input[type='number']").forEach(input => {
+                input.value = "";
+            });
+        }
+    });
+
+    calcularTabla();
+}
+
+function initFiltroEquipos() {
+    const select = document.getElementById("equipoFilter");
+    equipos.forEach(equipo => {
+        const option = document.createElement("option");
+        option.value = equipo;
+        option.textContent = equipo;
+        select.appendChild(option);
+    });
+}
+
+function filtrarPorEquipo() {
+    const equipoSeleccionado = document.getElementById("equipoFilter").value;
+    renderFixture(equipoSeleccionado);
+}
+
+function initFiltroTablaEquipos() {
+    const select = document.getElementById("equipoFilterTabla");
+    equipos.forEach(equipo => {
+        const option = document.createElement("option");
+        option.value = equipo;
+        option.textContent = equipo;
+        select.appendChild(option);
+    });
+}
+
+function filtrarTablaPorEquipo() {
+    const equipoSeleccionado = document.getElementById("equipoFilterTabla").value;
+    const filas = document.querySelectorAll("#tabla-posiciones tr");
+
+    filas.forEach(fila => {
+        const equipoNombre = fila.querySelector("td:nth-child(2)");
+        if (!equipoNombre) return; // Skip header row
+
+        if (equipoSeleccionado === "TODOS" || equipoNombre.textContent.trim() === equipoSeleccionado) {
+            fila.style.display = "";
+        } else {
+            fila.style.display = "none";
+        }
+    });
+}
+
+
+
+
+
+
+let ordenFinalGlobal = [];
+let top7Definitivo = [];
+
+////////////////////////////////////////////////////////
+// NUEVO SISTEMA DE DESEMPATES AVANZADOS POR GRUPOS //
+////////////////////////////////////////////////////////
+
+
+
+function ordenarTablaPorCriteriosAvanzados() {
+    explicacionesDesempate.length = 0;
+
+    const gruposPorPuntos = {};
+    for (const equipo in tablaPosiciones) {
+        const pts = tablaPosiciones[equipo].Pts;
+        if (!gruposPorPuntos[pts]) gruposPorPuntos[pts] = [];
+        gruposPorPuntos[pts].push(equipo);
+    }
+
+    const gruposOrdenados = Object.keys(gruposPorPuntos)
+        .map(p => parseInt(p))
+        .sort((a, b) => b - a)
+        .map(pts => gruposPorPuntos[pts]);
+
+    let ordenFinal = [];
+
+    gruposOrdenados.forEach(grupo => {
+        if (grupo.length === 1) {
+            ordenFinal = ordenFinal.concat(grupo);
+        } else {
+            const grupoOrdenado = ordenarGrupo(grupo);
+            ordenFinal = ordenFinal.concat(grupoOrdenado);
+        }
+    });
+
+    ordenFinalGlobal = [...ordenFinal];
+    explicacionesDesempate.sort((a, b) => b.tamaño - a.tamaño);
+    top7Definitivo = ordenFinal.slice(0, 7);
+    return ordenFinal;
+}
+
+function ordenarGrupo(grupo) {
+    const criterios = [
+        {
+            nombre: "2.1: Puntaje entre sí",
+            fn: equipo => sumarPuntosEntreGrupo(grupo, equipo)
+        },
+        {
+            nombre: "2.2: Puntaje contra top 7",
+            fn: equipo => {
+                const rivales = top7Definitivo.filter(e => !grupo.includes(e));
+                return obtenerPuntosContra(equipo, rivales);
+            }
+        },
+        {
+            nombre: "2.3: Goles a favor entre sí",
+            fn: equipo => sumarGolesAFavorEntreGrupo(grupo, equipo)
+        },
+        {
+            nombre: "2.4: Goles en contra entre sí",
+            fn: equipo => sumarGolesEnContraEntreGrupo(grupo, equipo),
+            ascendente: true
+        },
+        {
+            nombre: "2.5: Goles en contra totales",
+            fn: equipo => tablaPosiciones[equipo].GC,
+            ascendente: true
+        },
+        {
+            nombre: "2.6: Goles a favor totales",
+            fn: equipo => tablaPosiciones[equipo].GF
+        }
+    ];
+
+    let actual = [...grupo];
+    const historial = [];
+
+    for (const criterio of criterios) {
+        const valores = {};
+        actual.forEach(e => valores[e] = criterio.fn(e));
+
+        historial.push({
+            nombre: criterio.nombre,
+            valores: { ...valores }
+        });
+
+        // Agrupar equipos con mismo valor
+        const gruposPorValor = {};
+        for (const equipo of actual) {
+            const v = valores[equipo];
+            if (!gruposPorValor[v]) gruposPorValor[v] = [];
+            gruposPorValor[v].push(equipo);
+        }
+
+        // Si todos tienen distinto valor, ya se pueden ordenar
+        if (Object.keys(gruposPorValor).length === actual.length) {
+            actual.sort((a, b) =>
+                criterio.ascendente ? valores[a] - valores[b] : valores[b] - valores[a]
+            );
+            break;
+        }
+
+        // Si todos tienen el mismo valor, seguir con el próximo criterio
+        if (Object.keys(gruposPorValor).length === 1) {
+            continue;
+        }
+
+        // Si hay diferencia → ordenar subgrupos recursivamente
+        const nuevoOrden = [];
+        const valoresOrdenados = Object.keys(gruposPorValor).sort((a, b) =>
+            criterio.ascendente ? a - b : b - a
+        );
+
+        for (const valor of valoresOrdenados) {
+            const subgrupo = gruposPorValor[valor];
+            if (subgrupo.length === 1) {
+                nuevoOrden.push(subgrupo[0]);
             } else {
-                tablaPosiciones[local].PE++;
-                tablaPosiciones[visitante].PE++;
-                tablaPosiciones[local].Pts += 1;
-                tablaPosiciones[visitante].Pts += 1;
+                const ordenado = ordenarGrupo(subgrupo);
+                nuevoOrden.push(...ordenado);
             }
         }
 
-        function renderTabla() {
-            const tbody = document.getElementById("tabla-posiciones");
-            const equiposOrdenados = Object.keys(tablaPosiciones).sort((a, b) => {
-                if (tablaPosiciones[b].Pts !== tablaPosiciones[a].Pts) {
-                    return tablaPosiciones[b].Pts - tablaPosiciones[a].Pts;
-                } else {
-                    const dgB = tablaPosiciones[b].GF - tablaPosiciones[b].GC;
-                    const dgA = tablaPosiciones[a].GF - tablaPosiciones[a].GC;
-                    return dgB - dgA;
-                }
-            });
+        actual = nuevoOrden;
+        break; // Salir del ciclo, ya que se aplicó un criterio que ordenó al menos parcialmente
+    }
 
-            tbody.innerHTML = "";
-            equiposOrdenados.forEach((equipo, index) => {
-                const t = tablaPosiciones[equipo];
-                tbody.innerHTML += `
+    const resultadoFinal = [...actual];
+
+    // Guardar explicación si afecta al top 7
+    const todosSimulados = [...ordenFinalGlobal, ...resultadoFinal];
+    const top7Simulados = todosSimulados.slice(0, 7);
+    if (resultadoFinal.some(e => top7Simulados.includes(e))) {
+        const entrada = {
+            grupo: [...resultadoFinal],
+            criterio: historial,
+            tamaño: grupo.length
+        };
+        explicacionesDesempate.push(entrada);
+    }
+
+    return resultadoFinal;
+}
+
+function obtenerResultadosEntreGrupo(grupo) {
+    if (!Array.isArray(grupo) || grupo.length < 2) return [];
+
+    const todasFechas = { ...fechasFijas, ...fechasEditables };
+    const resultados = [];
+
+    for (const fecha in todasFechas) {
+        todasFechas[fecha].forEach(p => {
+            const gl = parseInt(p.goles_local);
+            const gv = parseInt(p.goles_visitante);
+            if (isNaN(gl) || isNaN(gv)) return;
+
+            if (grupo.includes(p.local) && grupo.includes(p.visitante)) {
+                resultados.push({
+                    equipo: p.local,
+                    rival: p.visitante,
+                    gf: gl,
+                    gc: gv,
+                    puntos: gl > gv ? 3 : (gl === gv ? 1 : 0)
+                });
+                resultados.push({
+                    equipo: p.visitante,
+                    rival: p.local,
+                    gf: gv,
+                    gc: gl,
+                    puntos: gv > gl ? 3 : (gv === gl ? 1 : 0)
+                });
+            }
+        });
+    }
+
+    return resultados;
+}
+
+function sumarPuntosEntreGrupo(grupo, equipo) {
+    if (!Array.isArray(grupo) || grupo.length < 2) return 0;
+    const resultados = obtenerResultadosEntreGrupo(grupo);
+    return resultados
+        .filter(r => r.equipo === equipo)
+        .reduce((sum, r) => sum + r.puntos, 0);
+}
+
+function sumarGolesAFavorEntreGrupo(grupo, equipo) {
+    if (!Array.isArray(grupo) || grupo.length < 2) return 0;
+    const resultados = obtenerResultadosEntreGrupo(grupo);
+    return resultados
+        .filter(r => r.equipo === equipo)
+        .reduce((sum, r) => sum + r.gf, 0);
+}
+
+function sumarGolesEnContraEntreGrupo(grupo, equipo) {
+    if (!Array.isArray(grupo) || grupo.length < 2) return 0;
+    const resultados = obtenerResultadosEntreGrupo(grupo);
+    return resultados
+        .filter(r => r.equipo === equipo)
+        .reduce((sum, r) => sum + r.gc, 0);
+}
+
+function renderExplicacionDesempate(equiposOrdenados) {
+    if (explicacionesDesempate.length === 0) {
+        document.getElementById("explicacion-desempate").innerHTML = "";
+        return;
+    }
+
+    const top7 = equiposOrdenados.slice(0, 7);
+    const mensajes = explicacionesDesempate.filter(exp =>
+        exp.grupo.some(e => top7.includes(e))
+    );
+
+    if (mensajes.length === 0) {
+        document.getElementById("explicacion-desempate").innerHTML = "";
+        return;
+    }
+
+    let html = `<strong>Desempates aplicados (solo del 1° al 7°):</strong><ul class="list-disc pl-5 mt-2">`;
+
+    mensajes.forEach(exp => {
+        html += `<li class="mb-4"><b>${exp.grupo.join("</b>, <b>")}</b>`;
+        html += `<div class="overflow-auto mt-2"><table class="table-auto border-collapse text-xs text-white"><thead><tr><th class="border p-1 bg-slate-700">Criterio</th>`;
+
+        exp.grupo.forEach(equipo => {
+            html += `<th class="border p-1 bg-slate-700">${equipo}</th>`;
+        });
+
+        html += `</tr></thead><tbody>`;
+
+        if (exp.criterio && Array.isArray(exp.criterio)) {
+            exp.criterio.forEach(paso => {
+                html += `<tr><td class="border p-1 bg-slate-600">${paso.nombre}</td>`;
+                exp.grupo.forEach(e => {
+                    html += `<td class="border p-1 text-center">${paso.valores[e]}</td>`;
+                });
+                html += `</tr>`;
+            });
+        } else if (exp.criterio) {
+            html += `<div><b>Criterio aplicado:</b> ${exp.criterio}</div>`;
+        }
+
+        html += `</tbody></table></div>`;
+
+        // Si es un grupo de 3 con un despejado claro, mostrar quién quedó con el puesto
+        if (exp.grupo.length === 3) {
+            const primerPaso = exp.criterio?.[0];
+            if (primerPaso && primerPaso.valores) {
+                const valores = Object.entries(primerPaso.valores);
+                const puntajes = valores.map(([, v]) => v);
+                const únicos = [...new Set(puntajes)];
+
+                if (únicos.length === 2) {
+                    const valorAlto = Math.max(...puntajes);
+                    const [equipoDespejado] = valores.find(([, v]) => v === valorAlto);
+                    const puesto = ordenFinalGlobal.indexOf(equipoDespejado) + 1;
+                    html += `<div class="mt-1 italic text-sm text-green-300">${equipoDespejado} se queda con el ${puesto}° puesto</div>`;
+                }
+            }
+        }
+
+        html += `</li>`;
+    });
+
+    html += `</ul>`;
+    document.getElementById("explicacion-desempate").innerHTML = html;
+}
+
+
+function renderTabla() {
+    criteriosAplicados.length = 0;
+
+    const tbody = document.getElementById("tabla-posiciones");
+    const equiposOrdenados = ordenarTablaPorCriteriosAvanzados();
+
+    tbody.innerHTML = "";
+    equiposOrdenados.forEach((equipo, index) => {
+        const t = tablaPosiciones[equipo];
+        tbody.innerHTML += `
                 <tr>
                     <td class="border pos-${index + 1}">${index + 1}</td>
                     <td class="border text-left pl-2">
@@ -1089,83 +1590,26 @@ const fechasFijas = {
                     <td class="border">${t.GC}</td>
                     <td class="border">${t.GF - t.GC}</td>
                 </tr>`;
-            });
-        }
+    });
 
-        renderFixture();
-        calcularTabla();
+    renderExplicacionDesempate(equiposOrdenados);
+}
 
-        function limpiarResultadosFechas() {
-            ["FECHA 15", "FECHA 16"].forEach(fecha => {
-                fechasEditables[fecha].forEach((partido, index) => {
-                    partido.goles_local = "";
-                    partido.goles_visitante = "";
-                });
-            });
+renderFixture();
+calcularTabla();
 
-            // Vaciar los inputs visibles
-            document.querySelectorAll(".fecha-card").forEach(card => {
-                const titulo = card.querySelector("h3").innerText;
-                if (["FECHA 15", "FECHA 16"].includes(titulo)) {
-                    card.querySelectorAll("input[type='number']").forEach(input => {
-                        input.value = "";
-                    });
-                }
-            });
-
-            calcularTabla();
-        }
-
-        function initFiltroEquipos() {
-            const select = document.getElementById("equipoFilter");
-            equipos.forEach(equipo => {
-                const option = document.createElement("option");
-                option.value = equipo;
-                option.textContent = equipo;
-                select.appendChild(option);
-            });
-        }
-
-        function filtrarPorEquipo() {
-            const equipoSeleccionado = document.getElementById("equipoFilter").value;
-            renderFixture(equipoSeleccionado);
-        }
+window.onload = function () {
+    initFiltroEquipos();
+    initFiltroTablaEquipos();
+    renderFixture();
+    calcularTabla();
+};
 
 
 
 
 
-        function initFiltroTablaEquipos() {
-            const select = document.getElementById("equipoFilterTabla");
-            equipos.forEach(equipo => {
-                const option = document.createElement("option");
-                option.value = equipo;
-                option.textContent = equipo;
-                select.appendChild(option);
-            });
-        }
-
-        function filtrarTablaPorEquipo() {
-            const equipoSeleccionado = document.getElementById("equipoFilterTabla").value;
-            const filas = document.querySelectorAll("#tabla-posiciones tr");
-
-            filas.forEach(fila => {
-                const equipoNombre = fila.querySelector("td:nth-child(2)");
-                if (!equipoNombre) return; // Skip header row
-
-                if (equipoSeleccionado === "TODOS" || equipoNombre.textContent.trim() === equipoSeleccionado) {
-                    fila.style.display = "";
-                } else {
-                    fila.style.display = "none";
-                }
-            });
-        }
 
 
 
-        window.onload = function () {
-            initFiltroEquipos();
-            initFiltroTablaEquipos();
-            renderFixture();
-            calcularTabla();
-        };
+
