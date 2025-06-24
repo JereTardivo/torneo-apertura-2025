@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Torneo Regional - Resultados y Tabla</title>
+    <script src="https://cdn.tailwindcss.com">
+        function limpiarResultadosFechas() {
+            ["FFECHA 16"].forEach(fecha => {
+                fechasEditables[fecha].forEach((partido, index) => {
+                    partido.goles_local = "";
+                    partido.goles_visitante = "";
+                });
+            });
+
+            // Vaciar los inputs visibles
+            document.querySelectorAll(".fecha-card").forEach(card => {
+                const titulo = card.querySelector("h3").innerText;
+                if (["FECHA 16"].includes(titulo)) {
+                    card.querySelectorAll("input[type='number']").forEach(input => {
+                        input.value = "";
+                    });
+                }
+            });
+
+            calcularTabla();
+        }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="p-4">
+
+    <div class="flex flex-col items-center mb-6">
+        <img src="lrrf-logo.png" alt="LRRF Logo" class="w-24 mb-2">
+        <h2 class="text-2xl font-bold text-center">CAMPEONATO APERTURA LRRF 2025</h2>
+    </div>
+
+    <div class="flex justify-center mb-4">
+        <label for="equipoFilter" class="mr-2 font-bold text-lg">Filtrar por equipo:</label>
+        <select id="equipoFilter" onchange="filtrarPorEquipo()" class="text-black p-1 rounded">
+            <option value="TODOS">Mostrar todos</option>
+        </select>
+    </div>
+
+    <div id="fixture"></div>
+
+    <div class="flex justify-center my-6">
+        <button onclick="limpiarResultadosFechas()"
+            class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Limpiar Resultados (Fecha 16)
+        </button>
+    </div>
+
+    <div class="flex justify-center mb-4">
+        <label for="equipoFilterTabla" class="mr-2 font-bold text-lg">Filtrar tabla por equipo:</label>
+        <select id="equipoFilterTabla" onchange="filtrarTablaPorEquipo()" class="text-black p-1 rounded">
+            <option value="TODOS">Mostrar todos</option>
+        </select>
+    </div>
+
+    <div class="card">
+        <h2 class="text-xl mb-2 font-bold text-center">Tabla de Posiciones</h2>
+        <table class="table-auto text-sm text-white border-collapse w-full">
+            <thead>
+                <tr>
+                    <th class="border">#</th>
+                    <th class="border">Equipo</th>
+                    <th class="border">PJ</th>
+                    <th class="border">Pts</th>
+                    <th class="border">PG</th>
+                    <th class="border">PE</th>
+                    <th class="border">PP</th>
+                    <th class="border">GF</th>
+                    <th class="border">GC</th>
+                    <th class="border">DG</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-posiciones"></tbody>
+        </table>
+        
+        <div class="mt-4 text-sm text-white">
+            <div class="flex items-center mb-1">
+                <div class="w-4 h-4 mr-2" style="background-color: #ffd700;"></div>
+                <span>1° Clasifica directamente a semifinales</span>
+            </div>
+            <div class="flex items-center">
+                <div class="w-4 h-4 mr-2" style="background-color: #4fc3f7;"></div>
+                <span>2° al 7° Clasifican a cuartos de final (partido en cancha del mejor posicionado)</span>
+            </div>
+        </div>
+        <br> 
+        <div id="explicacion-desempate" class="mt-4 text-sm text-white p-4 bg-slate-800 rounded-md"></div>
+    </div>
+
+    <div class="mt-8 p-4 border-2 border-gray-400 rounded-md bg-white text-black max-w-4xl mx-auto">
+        <h1 class="text-xl font-bold mb-4">LA TABLITA</h1>
+        <h2 class="text-xl font-bold mb-4"> Desempates en caso de igualdad de puntos</h2>
+        <ol class="list-decimal list-inside space-y-1 text-sm md:text-base">
+            <li>El que haya obtenido mayor puntaje en los partidos disputados entre sí (los empatados).</li>
+            <li>El que haya obtenido mayor puntaje en los partidos disputados contra el o los equipos clasificados
+                (todos).</li>
+            <li>El que tenga mayor cantidad de goles a favor en los partidos disputados entre sí (los empatados).</li>
+            <li>El que tenga menos goles en contra en los partidos disputados entre sí (los empatados).</li>
+            <li>El que tenga menor cantidad de goles en contra en la disputa completa del campeonato. </li>
+            <li>El que tenga mayor cantidad de goles a favor en la disputa completa del campeonato.</li>
+            <li>Fair Play: El equipo que tenga menor cantidad de expulsados en la disputa completa del campeonato.</li>
+            <li>En caso de persistir la igualdad se recurrirá a un sorteo a realizarse en una reunión del Consejo
+                Directivo de la Liga Regional Riotercerense de Fútbol y/o Mesa Directiva con los clubes involucrados.
+            </li>
+        </ol>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
