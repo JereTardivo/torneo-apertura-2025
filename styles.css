@@ -9,6 +9,9 @@ body {
             border-radius: 8px;
             padding: 1rem;
             margin-bottom: 1rem;
+            max-width: 950px; 
+    margin-left: auto;
+    margin-right: auto;
         }
 
         .match {
@@ -102,6 +105,39 @@ body {
             /* Celeste */
             color: #000;
         }
+
+        .tabla-posiciones {
+    font-size: 0.75rem; /* text-xs */
+    table-layout: auto;
+    width: 100%;
+}
+
+.tabla-posiciones th,
+.tabla-posiciones td {
+    padding: 0.25rem 0.4rem; /* menos espacio */
+    white-space: nowrap;
+}
+
+.tabla-posiciones-limitada {
+    max-width: 900px;
+    width: 100%;
+}
+
+.tabla-desempate {
+    max-width: 900px;
+    margin: 0.5rem auto;
+    width: 100%;
+    font-size: 0.75rem;
+    table-layout: auto;
+    border-spacing: 0;
+}
+
+.tabla-desempate th,
+.tabla-desempate td {
+    padding: 0.25rem 0.4rem; /* más ajustado */
+    white-space: nowrap;
+    text-align: center;
+}
 
 
 /* === Force ALL number inputs to have black text === */
