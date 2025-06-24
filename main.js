@@ -1195,33 +1195,66 @@ function compararEquipos(a, b) {
 }
 
 function renderExplicacionDesempate(equiposOrdenados) {
-    if (criteriosAplicados.length === 0) {
+    if (explicacionesDesempate.length === 0) {
         document.getElementById("explicacion-desempate").innerHTML = "";
         return;
     }
 
-    // Solo mostrar si alguno de los equipos involucrados está del 1° al 7°
     const top7 = equiposOrdenados.slice(0, 7);
-    const desempatesTop7 = criteriosAplicados.filter(({ equipos }) =>
-        equipos.some(e => top7.includes(e))
+    const mensajes = explicacionesDesempate.filter(exp =>
+        exp.grupo.some(e => top7.includes(e))
     );
 
-    if (desempatesTop7.length === 0) {
+    if (mensajes.length === 0) {
         document.getElementById("explicacion-desempate").innerHTML = "";
         return;
     }
 
-    let explicacion = `<strong>Desempates aplicados (solo del 1° al 7°):</strong><ul class="list-disc pl-5 mt-2">`;
+    let html = `<strong>Desempates aplicados (solo del 1° al 7°):</strong><ul class="list-disc pl-5 mt-2">`;
 
-    desempatesTop7.forEach(({ equipos, criterio }) => {
-        const [a, b] = equipos;
-        explicacion += `<li><b>${a}</b> vs <b>${b}</b>: ${criterio}</li>`;
+    mensajes.forEach(exp => {
+        html += `<li class="mb-4"><b>${exp.grupo.join("</b>, <b>")}</b>`;
+        html += `<div class="overflow-auto mt-2"><table class="table-auto border-collapse text-xs text-white"><thead><tr><th class="border p-1 bg-slate-700">Criterio</th>`;
+
+        exp.grupo.forEach(equipo => {
+            html += `<th class="border p-1 bg-slate-700">${equipo}</th>`;
+        });
+
+        html += `</tr></thead><tbody>`;
+
+        if (exp.criterio && Array.isArray(exp.criterio)) {
+            exp.criterio.forEach(paso => {
+                html += `<tr><td class="border p-1 bg-slate-600">${paso.nombre}</td>`;
+                exp.grupo.forEach(e => {
+                    html += `<td class="border p-1 text-center">${paso.valores[e] ?? "-"}</td>`;
+                });
+                html += `</tr>`;
+            });
+        }
+
+        html += `</tbody></table></div>`;
+
+        // Si el primer criterio despeja uno solo, mostrar quién se queda con el puesto
+        const primerPaso = exp.criterio?.[0];
+        if (exp.grupo.length === 3 && primerPaso) {
+            const valores = Object.entries(primerPaso.valores);
+            const puntajes = valores.map(([, v]) => v);
+            const únicos = [...new Set(puntajes)];
+            if (únicos.length === 2) {
+                const valorAlto = Math.max(...puntajes);
+                const [equipoDespejado] = valores.find(([, v]) => v === valorAlto);
+                const puesto = ordenFinalGlobal.indexOf(equipoDespejado) + 1;
+                html += `<div class="mt-1 italic text-sm text-green-300">${equipoDespejado} se queda con el ${puesto}° puesto</div>`;
+            }
+        }
+
+        html += `</li>`;
     });
 
-    explicacion += `</ul>`;
-    document.getElementById("explicacion-desempate").innerHTML = explicacion;
-    console.log("Criterios aplicados:", criteriosAplicados);
+    html += `</ul>`;
+    document.getElementById("explicacion-desempate").innerHTML = html;
 }
+
 
 //
 
@@ -1289,19 +1322,13 @@ function filtrarTablaPorEquipo() {
     });
 }
 
-
-
-
-
-
 let ordenFinalGlobal = [];
 let top7Definitivo = [];
+let grupoRaiz = [];
 
 ////////////////////////////////////////////////////////
 // NUEVO SISTEMA DE DESEMPATES AVANZADOS POR GRUPOS //
 ////////////////////////////////////////////////////////
-
-
 
 function ordenarTablaPorCriteriosAvanzados() {
     explicacionesDesempate.length = 0;
@@ -1324,7 +1351,9 @@ function ordenarTablaPorCriteriosAvanzados() {
         if (grupo.length === 1) {
             ordenFinal = ordenFinal.concat(grupo);
         } else {
-            const grupoOrdenado = ordenarGrupo(grupo);
+            grupoRaiz.length = 0;           // reiniciar grupo raíz
+            grupoRaiz.push(...grupo);       // copiar el grupo actual
+            const grupoOrdenado = ordenarGrupo(grupo, 0, [], [], ordenFinal.length + 1);
             ordenFinal = ordenFinal.concat(grupoOrdenado);
         }
     });
@@ -1335,14 +1364,16 @@ function ordenarTablaPorCriteriosAvanzados() {
     return ordenFinal;
 }
 
-function ordenarGrupo(grupo) {
+function ordenarGrupo(grupo, indiceCriterio = 0, historial = [], puestosResueltos = [], posicionInicial = 1) {
     const criterios = [
         {
             nombre: "2.1: Puntaje entre sí",
-            fn: equipo => sumarPuntosEntreGrupo(grupo, equipo)
+            codigo: "2.1",
+            fn: equipo => sumarPuntosEntreGrupo(grupoRaiz, equipo)
         },
         {
             nombre: "2.2: Puntaje contra top 7",
+            codigo: "2.2",
             fn: equipo => {
                 const rivales = top7Definitivo.filter(e => !grupo.includes(e));
                 return obtenerPuntosContra(equipo, rivales);
@@ -1350,92 +1381,81 @@ function ordenarGrupo(grupo) {
         },
         {
             nombre: "2.3: Goles a favor entre sí",
-            fn: equipo => sumarGolesAFavorEntreGrupo(grupo, equipo)
+            codigo: "2.3",
+            fn: equipo => sumarGolesAFavorEntreGrupo(grupoRaiz, equipo)
         },
         {
             nombre: "2.4: Goles en contra entre sí",
-            fn: equipo => sumarGolesEnContraEntreGrupo(grupo, equipo),
+            codigo: "2.4",
+            fn: equipo => sumarGolesEnContraEntreGrupo(grupoRaiz, equipo),
             ascendente: true
         },
         {
             nombre: "2.5: Goles en contra totales",
+            codigo: "2.5",
             fn: equipo => tablaPosiciones[equipo].GC,
             ascendente: true
         },
         {
             nombre: "2.6: Goles a favor totales",
+            codigo: "2.6",
             fn: equipo => tablaPosiciones[equipo].GF
         }
     ];
 
-    let actual = [...grupo];
-    const historial = [];
+    if (grupo.length === 1 || indiceCriterio >= criterios.length) return [...grupo];
 
-    for (const criterio of criterios) {
-        const valores = {};
-        actual.forEach(e => valores[e] = criterio.fn(e));
+    const criterio = criterios[indiceCriterio];
+    const valores = {};
+    grupo.forEach(e => valores[e] = criterio.fn(e));
 
-        historial.push({
-            nombre: criterio.nombre,
-            valores: { ...valores }
-        });
+    historial.push({
+        nombre: criterio.nombre,
+        codigo: criterio.codigo,
+        valores: { ...valores }
+    });
 
-        // Agrupar equipos con mismo valor
-        const gruposPorValor = {};
-        for (const equipo of actual) {
-            const v = valores[equipo];
-            if (!gruposPorValor[v]) gruposPorValor[v] = [];
-            gruposPorValor[v].push(equipo);
-        }
-
-        // Si todos tienen distinto valor, ya se pueden ordenar
-        if (Object.keys(gruposPorValor).length === actual.length) {
-            actual.sort((a, b) =>
-                criterio.ascendente ? valores[a] - valores[b] : valores[b] - valores[a]
-            );
-            break;
-        }
-
-        // Si todos tienen el mismo valor, seguir con el próximo criterio
-        if (Object.keys(gruposPorValor).length === 1) {
-            continue;
-        }
-
-        // Si hay diferencia → ordenar subgrupos recursivamente
-        const nuevoOrden = [];
-        const valoresOrdenados = Object.keys(gruposPorValor).sort((a, b) =>
-            criterio.ascendente ? a - b : b - a
-        );
-
-        for (const valor of valoresOrdenados) {
-            const subgrupo = gruposPorValor[valor];
-            if (subgrupo.length === 1) {
-                nuevoOrden.push(subgrupo[0]);
-            } else {
-                const ordenado = ordenarGrupo(subgrupo);
-                nuevoOrden.push(...ordenado);
-            }
-        }
-
-        actual = nuevoOrden;
-        break; // Salir del ciclo, ya que se aplicó un criterio que ordenó al menos parcialmente
+    const gruposPorValor = {};
+    for (const equipo of grupo) {
+        const v = valores[equipo];
+        if (!gruposPorValor[v]) gruposPorValor[v] = [];
+        gruposPorValor[v].push(equipo);
     }
 
-    const resultadoFinal = [...actual];
+    const valoresOrdenados = Object.keys(gruposPorValor).sort((a, b) =>
+        criterio.ascendente ? a - b : b - a
+    );
 
-    // Guardar explicación si afecta al top 7
-    const todosSimulados = [...ordenFinalGlobal, ...resultadoFinal];
-    const top7Simulados = todosSimulados.slice(0, 7);
-    if (resultadoFinal.some(e => top7Simulados.includes(e))) {
-        const entrada = {
-            grupo: [...resultadoFinal],
-            criterio: historial,
+    let ordenFinal = [];
+
+    for (const valor of valoresOrdenados) {
+        const subgrupo = gruposPorValor[valor];
+        if (subgrupo.length === 1) {
+            const equipo = subgrupo[0];
+            const puesto = posicionInicial + ordenFinal.length;
+            puestosResueltos.push({
+                equipo,
+                criterio: criterio.codigo,
+                puesto
+            });
+            ordenFinal.push(equipo);
+        } else {
+            const ordenado = ordenarGrupo(subgrupo, indiceCriterio + 1, historial, puestosResueltos, posicionInicial + ordenFinal.length);
+            ordenFinal.push(...ordenado);
+        }
+    }
+
+    const top7Simulados = [...ordenFinalGlobal, ...ordenFinal].slice(0, 7);
+    if (grupo.length >= 2 && indiceCriterio === 0 && grupo.some(e => top7Simulados.includes(e))) {
+        explicacionesDesempate.push({
+            grupo: [...grupo],
+            historial: [...historial],
+            clasificados: [...puestosResueltos],
             tamaño: grupo.length
-        };
-        explicacionesDesempate.push(entrada);
+        });
     }
 
-    return resultadoFinal;
+    return ordenFinal;
 }
 
 function obtenerResultadosEntreGrupo(grupo) {
@@ -1473,7 +1493,6 @@ function obtenerResultadosEntreGrupo(grupo) {
 }
 
 function sumarPuntosEntreGrupo(grupo, equipo) {
-    if (!Array.isArray(grupo) || grupo.length < 2) return 0;
     const resultados = obtenerResultadosEntreGrupo(grupo);
     return resultados
         .filter(r => r.equipo === equipo)
@@ -1481,7 +1500,6 @@ function sumarPuntosEntreGrupo(grupo, equipo) {
 }
 
 function sumarGolesAFavorEntreGrupo(grupo, equipo) {
-    if (!Array.isArray(grupo) || grupo.length < 2) return 0;
     const resultados = obtenerResultadosEntreGrupo(grupo);
     return resultados
         .filter(r => r.equipo === equipo)
@@ -1489,7 +1507,6 @@ function sumarGolesAFavorEntreGrupo(grupo, equipo) {
 }
 
 function sumarGolesEnContraEntreGrupo(grupo, equipo) {
-    if (!Array.isArray(grupo) || grupo.length < 2) return 0;
     const resultados = obtenerResultadosEntreGrupo(grupo);
     return resultados
         .filter(r => r.equipo === equipo)
@@ -1524,35 +1541,69 @@ function renderExplicacionDesempate(equiposOrdenados) {
 
         html += `</tr></thead><tbody>`;
 
-        if (exp.criterio && Array.isArray(exp.criterio)) {
-            exp.criterio.forEach(paso => {
+        if (Array.isArray(exp.historial)) {
+            exp.historial.forEach(paso => {
                 html += `<tr><td class="border p-1 bg-slate-600">${paso.nombre}</td>`;
+
+                // Determinar qué equipo(s) fueron clasificados por este criterio
+                const ganadores = [];
+                if (exp.clasificados && paso.valores) {
+                    const clasificadosDelPaso = exp.clasificados.filter(c => c.criterio === paso.codigo);
+
+                    if (clasificadosDelPaso.length === 1) {
+                        // Solo un clasificado por este criterio → marcarlo directamente
+                        ganadores.push(clasificadosDelPaso[0].equipo);
+                    } else if (clasificadosDelPaso.length === 2) {
+                        // Comparar entre dos para ver quién ganó
+                        const [a, b] = clasificadosDelPaso;
+                        const valA = paso.valores[a.equipo];
+                        const valB = paso.valores[b.equipo];
+
+                        if (valA !== valB) {
+                            const asc = paso.nombre.toLowerCase().includes("en contra");
+                            const mejor = asc ? (valA < valB ? a.equipo : b.equipo) : (valA > valB ? a.equipo : b.equipo);
+                            ganadores.push(mejor);
+                        }
+                    } else {
+                        // Grupo de 3 o más → buscar valor único
+                        const valorPorEquipo = {};
+                        clasificadosDelPaso.forEach(c => {
+                            valorPorEquipo[c.equipo] = paso.valores[c.equipo];
+                        });
+
+                        const frecuencia = {};
+                        Object.values(valorPorEquipo).forEach(v => {
+                            frecuencia[v] = (frecuencia[v] || 0) + 1;
+                        });
+
+                        for (const [equipo, valor] of Object.entries(valorPorEquipo)) {
+                            if (frecuencia[valor] === 1) {
+                                ganadores.push(equipo);
+                            }
+                        }
+                    }
+                }
+
+
                 exp.grupo.forEach(e => {
-                    html += `<td class="border p-1 text-center">${paso.valores[e]}</td>`;
+                    const valor = paso.valores[e] ?? "-";
+                    const claseExtra = ganadores.includes(e) ? "bg-lime-500 text-black font-bold" : "";
+
+                    html += `<td class="border p-1 text-center ${claseExtra}">${valor}</td>`;
                 });
+
                 html += `</tr>`;
             });
-        } else if (exp.criterio) {
-            html += `<div><b>Criterio aplicado:</b> ${exp.criterio}</div>`;
         }
 
         html += `</tbody></table></div>`;
 
-        // Si es un grupo de 3 con un despejado claro, mostrar quién quedó con el puesto
-        if (exp.grupo.length === 3) {
-            const primerPaso = exp.criterio?.[0];
-            if (primerPaso && primerPaso.valores) {
-                const valores = Object.entries(primerPaso.valores);
-                const puntajes = valores.map(([, v]) => v);
-                const únicos = [...new Set(puntajes)];
-
-                if (únicos.length === 2) {
-                    const valorAlto = Math.max(...puntajes);
-                    const [equipoDespejado] = valores.find(([, v]) => v === valorAlto);
-                    const puesto = ordenFinalGlobal.indexOf(equipoDespejado) + 1;
-                    html += `<div class="mt-1 italic text-sm text-green-300">${equipoDespejado} se queda con el ${puesto}° puesto</div>`;
-                }
-            }
+        if (Array.isArray(exp.clasificados) && exp.clasificados.length > 0) {
+            html += `<div class="mt-2 text-sm text-green-300">`;
+            exp.clasificados.forEach(c => {
+                html += `<div><b>${c.equipo}</b> - Clasifica ${c.puesto}° por desempate ${c.criterio}</div>`;
+            });
+            html += `</div>`;
         }
 
         html += `</li>`;
@@ -1561,7 +1612,6 @@ function renderExplicacionDesempate(equiposOrdenados) {
     html += `</ul>`;
     document.getElementById("explicacion-desempate").innerHTML = html;
 }
-
 
 function renderTabla() {
     criteriosAplicados.length = 0;
