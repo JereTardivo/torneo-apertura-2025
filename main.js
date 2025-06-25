@@ -1631,7 +1631,7 @@ function renderTabla() {
                     <td class="border px-2 py-1 text-center pl-2">
                         <div class="flex items-center gap-2">
                             <img src="${nombreAArchivo(equipo)}" alt="${equipo}" class="escudo-equipo">
-                            <span class="truncate abreviado">${obtenerAbreviatura(equipo)}</span>
+                            <span class="abreviado">${obtenerAbreviatura(equipo)}</span>
                             <span class="truncate completo">${equipo}</span>
                         </div>
                     </td>
