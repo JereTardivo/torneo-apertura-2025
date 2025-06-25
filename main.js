@@ -907,21 +907,22 @@ function updateResultado(fecha, index, equipo, value) {
 
 function actualizarInputVisible(fecha, index, equipo, valor) {
     document.querySelectorAll(".fecha-card").forEach(card => {
-        const titulo = card.querySelector("h3").innerText;
+        const titulo = card.querySelector("h3")?.innerText;
         if (titulo === fecha) {
             const filas = card.querySelectorAll("tbody tr");
             const fila = filas[index];
             if (fila) {
-                const inputs = fila.querySelectorAll("input[type='number']");
-                if (equipo === "local") {
+                const inputs = fila.querySelectorAll("input");
+                if (equipo === "local" && inputs[0]) {
                     inputs[0].value = valor;
-                } else {
+                } else if (equipo === "visitante" && inputs[1]) {
                     inputs[1].value = valor;
                 }
             }
         }
     });
 }
+
 
 function renderFixture(filtroEquipo = "TODOS") {
 
@@ -1249,25 +1250,23 @@ function renderExplicacionDesempate(equiposOrdenados) {
 }
 
 function limpiarResultadosFechas() {
-    ["FECHA 16"].forEach(fecha => {
-        fechasEditables[fecha].forEach((partido, index) => {
+    // Resetear valores en la estructura de datos
+    Object.keys(fechasEditables).forEach(fecha => {
+        fechasEditables[fecha].forEach(partido => {
             partido.goles_local = "";
             partido.goles_visitante = "";
         });
     });
 
-    // Vaciar los inputs visibles
-    document.querySelectorAll(".fecha-card").forEach(card => {
-        const titulo = card.querySelector("h3").innerText;
-        if (["FECHA 16"].includes(titulo)) {
-            card.querySelectorAll("input[type='number']").forEach(input => {
-                input.value = "";
-            });
-        }
+    // Vaciar inputs visibles (aunque sean tipo 'text')
+    document.querySelectorAll(".fecha-card input[type='text']").forEach(input => {
+        input.value = "";
     });
 
-    calcularTabla();
+    calcularTabla();       // Recalcula tabla
+    renderFixture();       // Re-renderiza fixture con inputs vacíos
 }
+
 
 function initFiltroEquipos() {
     const select = document.getElementById("equipoFilter");
