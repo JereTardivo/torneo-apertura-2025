@@ -1608,7 +1608,7 @@ function obtenerAbreviatura(nombre) {
         "ATL. RIO TERCERO": "C.A.R.T.",
         "ATL. ALMAFUERTE": "C.A.A.",
         "ESTUDIANTES (HERNANDO)": "C.A.E.",
-        "VILLA GENERAL BELGRANO": "C.S.D.V.G.B.",
+        "VILLA GENERAL BELGRANO": "V.G.B.",
         "DEP. INDEPENDIENTE": "C.D.I."
     };
 
