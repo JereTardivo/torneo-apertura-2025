@@ -239,5 +239,9 @@ input[type="text"][inputmode="numeric"] {
         max-width: 35px;
         margin: 0 auto;
     }
+
+    .fecha-card td .font-bold.text-base {
+    font-size: 18px !important;
+}
 }
 
