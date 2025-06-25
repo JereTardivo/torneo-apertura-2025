@@ -212,7 +212,7 @@ input[type="text"][inputmode="numeric"] {
 
     /* Ancho truncado para nombres de equipos */
     .tabla-posiciones td:nth-child(2) span {
-        max-width: 70px !important;
+        max-width: 100px !important;
     }
 
     /* Espaciado de tablas */
