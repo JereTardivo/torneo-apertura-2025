@@ -164,3 +164,32 @@ input[type="text"][inputmode="numeric"] {
     max-width: 120px; /* ajustar si hace falta */
     vertical-align: middle;
 }
+
+/* Ajustes para pantallas pequeñas */
+@media screen and (max-width: 600px) {
+    .fecha-card td span,
+    .fecha-card th,
+    .tabla-posiciones td,
+    .tabla-posiciones th,
+    .match span {
+        font-size: 11px !important;
+    }
+
+    .escudo-equipo {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    .tabla-posiciones td:nth-child(2) span {
+        max-width: 80px; /* más angosto en móvil */
+    }
+
+    h2, h3, h4 {
+        font-size: 16px !important;
+    }
+
+    select,
+    label {
+        font-size: 14px !important;
+    }
+}
