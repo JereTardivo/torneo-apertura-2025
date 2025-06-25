@@ -1592,6 +1592,30 @@ function renderExplicacionDesempate(equiposOrdenados) {
     document.getElementById("explicacion-desempate").innerHTML = html;
 }
 
+function obtenerAbreviatura(nombre) {
+    const map = {
+        "REC. ELENENSE": "C.D.R.E.",
+        "ATL. INDEPENDIENTE": "C.A.I.",
+        "ATL. ASCASUBI": "C.A.A.",
+        "VECINOS UNIDOS": "C.V.U.",
+        "JUVENTUD AGRARIO": "C.J.A.C.",
+        "NAUTICO RUMIPAL": "C.N.R.",
+        "DEPORTIVO ITALIANO": "D.I.S.R.",
+        "SP. BELGRANO": "C.S.B.",
+        "BELGRANO (BERROTARAN)": "B.F.C.",
+        "TALLERES (BERROTARAN)": "C.A.T.",
+        "9 DE JULIO (RIO TERCERO)": "C.S.9.J.",
+        "ATL. RIO TERCERO": "C.A.R.T.",
+        "ATL. ALMAFUERTE": "C.A.A.",
+        "ESTUDIANTES (HERNANDO)": "C.A.E.",
+        "VILLA GENERAL BELGRANO": "C.S.D.V.G.B.",
+        "DEP. INDEPENDIENTE": "C.D.I."
+    };
+
+    return map[nombre] || nombre;
+}
+
+
 function renderTabla() {
     criteriosAplicados.length = 0;
 
@@ -1607,7 +1631,8 @@ function renderTabla() {
                     <td class="border px-2 py-1 text-center pl-2">
                         <div class="flex items-center gap-2">
                             <img src="${nombreAArchivo(equipo)}" alt="${equipo}" class="escudo-equipo">
-                            <span class="truncate">${equipo}</span>
+                            <span class="truncate block md:hidden">${obtenerAbreviatura(equipo)}</span>
+                            <span class="truncate hidden md:block">${equipo}</span>
                         </div>
                     </td>
                     <td class="border px-2 py-1 text-center">${t.PJ}</td>
