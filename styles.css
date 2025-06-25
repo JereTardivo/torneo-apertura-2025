@@ -167,24 +167,22 @@ input[type="text"][inputmode="numeric"] {
 
 /* Ajustes para pantallas pequeñas */
 @media screen and (max-width: 600px) {
+    /* Tipografía general */
     .fecha-card td span,
     .fecha-card th,
     .tabla-posiciones td,
     .tabla-posiciones th,
-    .match span {
+    .tabla-desempate th,
+    .tabla-desempate td,
+    .match span,
+    .card div,
+    .card span,
+    .card p {
         font-size: 11px !important;
     }
 
-    .escudo-equipo {
-        width: 24px !important;
-        height: 24px !important;
-    }
-
-    .tabla-posiciones td:nth-child(2) span {
-        max-width: 80px; /* más angosto en móvil */
-    }
-
-    h2, h3, h4 {
+    h2, h3, h4,
+    .card h2 {
         font-size: 16px !important;
     }
 
@@ -192,24 +190,28 @@ input[type="text"][inputmode="numeric"] {
     label {
         font-size: 14px !important;
     }
-}
 
-@media screen and (max-width: 600px) {
-    /* Tabla de posiciones */
-    .tabla-posiciones th,
-    .tabla-posiciones td {
-        font-size: 10px !important;
-        padding: 0.2rem !important;
+    #explicacion-desempate {
+        font-size: 13px !important;
     }
 
+    /* Escudos */
+    .escudo-equipo {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    /* Ancho truncado para nombres de equipos */
     .tabla-posiciones td:nth-child(2) span {
         max-width: 70px !important;
     }
 
-    /* Tabla de desempates */
+    /* Espaciado de tablas */
+    .tabla-posiciones th,
+    .tabla-posiciones td,
     .tabla-desempate th,
-    .tabla-desempate td {
-        font-size: 10px !important;
+    .tabla-desempate td,
+    .fecha-card td {
         padding: 0.2rem !important;
     }
 
@@ -217,19 +219,23 @@ input[type="text"][inputmode="numeric"] {
         white-space: nowrap;
     }
 
-    /* Ajustar subtítulo de explicación de desempate */
-    #explicacion-desempate {
-        font-size: 13px !important;
+    /* Inputs en fecha editable */
+    .fecha-card td input[type="text"] {
+        width: 30px !important;
+        font-size: 12px !important;
+        padding: 2px !important;
     }
 
-    /* Ajustes globales adicionales */
-    .card h2 {
-        font-size: 16px !important;
+    .fecha-card .flex.justify-center {
+        flex-direction: column;
+        gap: 2px;
     }
 
-    .card div,
-    .card span,
-    .card p {
-        font-size: 13px !important;
+    .fecha-card .flex.justify-center input {
+        display: inline-block;
+        width: 100%;
+        max-width: 35px;
+        margin: 0 auto;
     }
 }
+
