@@ -837,12 +837,9 @@ const equipos = [
 const tablaPosiciones = {};
 const criteriosAplicados = [];
 const explicacionesDesempate = [];
-<<<<<<< HEAD
 let ordenFinalGlobal = [];
 let top7Definitivo = [];
 let grupoRaiz = [];
-=======
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
 
 equipos.forEach(equipo => {
     tablaPosiciones[equipo] = { PJ: 0, Pts: 0, PG: 0, PE: 0, PP: 0, GF: 0, GC: 0 };
@@ -926,10 +923,6 @@ function actualizarInputVisible(fecha, index, equipo, valor) {
     });
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
 function renderFixture(filtroEquipo = "TODOS") {
 
     const container = document.getElementById("fixture");
@@ -1017,10 +1010,6 @@ function renderFixture(filtroEquipo = "TODOS") {
     }
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
 function calcularTabla() {
     for (const equipo in tablaPosiciones) {
         tablaPosiciones[equipo] = { PJ: 0, Pts: 0, PG: 0, PE: 0, PP: 0, GF: 0, GC: 0 };
@@ -1133,11 +1122,6 @@ function obtenerPuntosContra(equipo, rivales) {
     return puntos;
 }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
 function sumarPuntos(resultados, equipo) {
     return resultados.filter(r => r.equipo === equipo).reduce((sum, r) => sum + r.puntos, 0);
 }
@@ -1150,10 +1134,6 @@ function sumarGolesEnContra(resultados, equipo) {
     return resultados.filter(r => r.equipo === equipo).reduce((sum, r) => sum + r.gc, 0);
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
 function compararEquipos(a, b) {
     const equipoA = tablaPosiciones[a];
     const equipoB = tablaPosiciones[b];
@@ -1232,21 +1212,12 @@ function renderExplicacionDesempate(equiposOrdenados) {
 
     mensajes.forEach(exp => {
         html += `<li class="mb-4"><b>${exp.grupo.join("</b>, <b>")}</b>`;
-<<<<<<< HEAD
 
         // TABLA
         html += `<div class="mt-2"><table class="tabla-desempate border-collapse text-white"><thead><tr><th class="border p-1 bg-slate-700">Criterio</th>`;
         exp.grupo.forEach(equipo => {
             html += `<th class="border p-1 bg-slate-700">${equipo}</th>`;
         });
-=======
-        html += `<div class="overflow-auto mt-2"><table class="table-auto border-collapse text-xs text-white"><thead><tr><th class="border p-1 bg-slate-700">Criterio</th>`;
-
-        exp.grupo.forEach(equipo => {
-            html += `<th class="border p-1 bg-slate-700">${equipo}</th>`;
-        });
-
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
         html += `</tr></thead><tbody>`;
 
         if (exp.criterio && Array.isArray(exp.criterio)) {
@@ -1261,7 +1232,6 @@ function renderExplicacionDesempate(equiposOrdenados) {
 
         html += `</tbody></table></div>`;
 
-<<<<<<< HEAD
         // TEXTO DE CLASIFICADOS (debajo de la tabla)
         if (Array.isArray(exp.clasificados) && exp.clasificados.length > 0) {
             html += `<div class="mt-2 text-sm text-green-300">`;
@@ -1269,20 +1239,6 @@ function renderExplicacionDesempate(equiposOrdenados) {
                 html += `<div><b>${c.equipo}</b> - Clasifica ${c.puesto}° por desempate ${c.criterio}</div>`;
             });
             html += `</div>`;
-=======
-        // Si el primer criterio despeja uno solo, mostrar quién se queda con el puesto
-        const primerPaso = exp.criterio?.[0];
-        if (exp.grupo.length === 3 && primerPaso) {
-            const valores = Object.entries(primerPaso.valores);
-            const puntajes = valores.map(([, v]) => v);
-            const únicos = [...new Set(puntajes)];
-            if (únicos.length === 2) {
-                const valorAlto = Math.max(...puntajes);
-                const [equipoDespejado] = valores.find(([, v]) => v === valorAlto);
-                const puesto = ordenFinalGlobal.indexOf(equipoDespejado) + 1;
-                html += `<div class="mt-1 italic text-sm text-green-300">${equipoDespejado} se queda con el ${puesto}° puesto</div>`;
-            }
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
         }
 
         html += `</li>`;
@@ -1292,14 +1248,6 @@ function renderExplicacionDesempate(equiposOrdenados) {
     document.getElementById("explicacion-desempate").innerHTML = html;
 }
 
-<<<<<<< HEAD
-=======
-
-//
-
-
-
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
 function limpiarResultadosFechas() {
     ["FECHA 16"].forEach(fecha => {
         fechasEditables[fecha].forEach((partido, index) => {
@@ -1362,17 +1310,6 @@ function filtrarTablaPorEquipo() {
     });
 }
 
-<<<<<<< HEAD
-=======
-let ordenFinalGlobal = [];
-let top7Definitivo = [];
-let grupoRaiz = [];
-
-////////////////////////////////////////////////////////
-// NUEVO SISTEMA DE DESEMPATES AVANZADOS POR GRUPOS //
-////////////////////////////////////////////////////////
-
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
 function ordenarTablaPorCriteriosAvanzados() {
     explicacionesDesempate.length = 0;
 
@@ -1410,20 +1347,12 @@ function ordenarTablaPorCriteriosAvanzados() {
 function ordenarGrupo(grupo, indiceCriterio = 0, historial = [], puestosResueltos = [], posicionInicial = 1) {
     const criterios = [
         {
-<<<<<<< HEAD
             nombre: "2.1: Mayor Puntaje entre sí",
-=======
-            nombre: "2.1: Puntaje entre sí",
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
             codigo: "2.1",
             fn: equipo => sumarPuntosEntreGrupo(grupoRaiz, equipo)
         },
         {
-<<<<<<< HEAD
             nombre: "2.2: Mayor Puntaje contra top 7",
-=======
-            nombre: "2.2: Puntaje contra top 7",
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
             codigo: "2.2",
             fn: equipo => {
                 const rivales = top7Definitivo.filter(e => !grupo.includes(e));
@@ -1431,40 +1360,24 @@ function ordenarGrupo(grupo, indiceCriterio = 0, historial = [], puestosResuelto
             }
         },
         {
-<<<<<<< HEAD
             nombre: "2.3: Mayor Cantidad de Goles a favor entre sí",
-=======
-            nombre: "2.3: Goles a favor entre sí",
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
             codigo: "2.3",
             fn: equipo => sumarGolesAFavorEntreGrupo(grupoRaiz, equipo)
         },
         {
-<<<<<<< HEAD
             nombre: "2.4: Menor Cantidad de Goles en contra entre sí",
-=======
-            nombre: "2.4: Goles en contra entre sí",
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
             codigo: "2.4",
             fn: equipo => sumarGolesEnContraEntreGrupo(grupoRaiz, equipo),
             ascendente: true
         },
         {
-<<<<<<< HEAD
             nombre: "2.5: Menor Cantidad de Goles en contra totales",
-=======
-            nombre: "2.5: Goles en contra totales",
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
             codigo: "2.5",
             fn: equipo => tablaPosiciones[equipo].GC,
             ascendente: true
         },
         {
-<<<<<<< HEAD
             nombre: "2.6: Mayor Cantidad de Goles a favor totales",
-=======
-            nombre: "2.6: Goles a favor totales",
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
             codigo: "2.6",
             fn: equipo => tablaPosiciones[equipo].GF
         }
@@ -1610,11 +1523,7 @@ function renderExplicacionDesempate(equiposOrdenados) {
 
         if (Array.isArray(exp.historial)) {
             exp.historial.forEach(paso => {
-<<<<<<< HEAD
                 html += `<tr><td class="border text-left p-1 bg-slate-600">${paso.nombre}</td>`;
-=======
-                html += `<tr><td class="border p-1 bg-slate-600">${paso.nombre}</td>`;
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
 
                 // Determinar qué equipo(s) fueron clasificados por este criterio
                 const ganadores = [];
@@ -1695,19 +1604,13 @@ function renderTabla() {
         const t = tablaPosiciones[equipo];
         tbody.innerHTML += `
                 <tr>
-<<<<<<< HEAD
                     <td class="border px-2 py-1 text-center pos-${index + 1}">${index + 1}</td>
                     <td class="border px-2 py-1 text-center pl-2">
-=======
-                    <td class="border pos-${index + 1}">${index + 1}</td>
-                    <td class="border text-left pl-2">
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
                         <div class="flex items-center gap-2">
                             <img src="${nombreAArchivo(equipo)}" alt="${equipo}" class="escudo-equipo">
                             <span class="truncate">${equipo}</span>
                         </div>
                     </td>
-<<<<<<< HEAD
                     <td class="border px-2 py-1 text-center">${t.PJ}</td>
 					<td class="border px-2 py-1 text-center">${t.Pts}</td>
                     <td class="border px-2 py-1 text-center">${t.PG}</td>
@@ -1716,16 +1619,6 @@ function renderTabla() {
                     <td class="border px-2 py-1 text-center">${t.GF}</td>
                     <td class="border px-2 py-1 text-center">${t.GC}</td>
                     <td class="border px-2 py-1 text-center">${t.GF - t.GC}</td>
-=======
-                    <td class="border">${t.PJ}</td>
-					<td class="border">${t.Pts}</td>
-                    <td class="border">${t.PG}</td>
-                    <td class="border">${t.PE}</td>
-                    <td class="border">${t.PP}</td>
-                    <td class="border">${t.GF}</td>
-                    <td class="border">${t.GC}</td>
-                    <td class="border">${t.GF - t.GC}</td>
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
                 </tr>`;
     });
 

@@ -9,12 +9,9 @@ body {
             border-radius: 8px;
             padding: 1rem;
             margin-bottom: 1rem;
-<<<<<<< HEAD
             max-width: 950px; 
     margin-left: auto;
     margin-right: auto;
-=======
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
         }
 
         .match {
@@ -109,7 +106,6 @@ body {
             color: #000;
         }
 
-<<<<<<< HEAD
         .tabla-posiciones {
     font-size: 0.75rem; /* text-xs */
     table-layout: auto;
@@ -143,8 +139,6 @@ body {
     text-align: center;
 }
 
-=======
->>>>>>> 612df295904f2581e445b60d8f0bc702c4853b13
 
 /* === Force ALL number inputs to have black text === */
 input[type="number"] {
