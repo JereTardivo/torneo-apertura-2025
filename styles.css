@@ -193,3 +193,43 @@ input[type="text"][inputmode="numeric"] {
         font-size: 14px !important;
     }
 }
+
+@media screen and (max-width: 600px) {
+    /* Tabla de posiciones */
+    .tabla-posiciones th,
+    .tabla-posiciones td {
+        font-size: 10px !important;
+        padding: 0.2rem !important;
+    }
+
+    .tabla-posiciones td:nth-child(2) span {
+        max-width: 70px !important;
+    }
+
+    /* Tabla de desempates */
+    .tabla-desempate th,
+    .tabla-desempate td {
+        font-size: 10px !important;
+        padding: 0.2rem !important;
+    }
+
+    .tabla-desempate th {
+        white-space: nowrap;
+    }
+
+    /* Ajustar subtítulo de explicación de desempate */
+    #explicacion-desempate {
+        font-size: 13px !important;
+    }
+
+    /* Ajustes globales adicionales */
+    .card h2 {
+        font-size: 16px !important;
+    }
+
+    .card div,
+    .card span,
+    .card p {
+        font-size: 13px !important;
+    }
+}
