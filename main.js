@@ -853,9 +853,9 @@ function renderFechasFijas() {
         fechasFijas[fecha].forEach(partido => {
             card.innerHTML += `
                     <div class="match flex justify-between items-center">
-                        <span class="text-sm md:text-base truncate">${partido.local}</span>
+                        <span class="text-sm md:text-base truncate">${partido.local.trim()}</span>
                         <span class="font-bold text-lg">${partido.goles_local} - ${partido.goles_visitante}</span>
-                        <span class="text-sm md:text-base truncate">${partido.visitante}</span>
+                        <span class="text-sm md:text-base truncate">${partido.visitante.trim()}</span>
                     </div>`;
         });
         container.appendChild(card);
@@ -870,13 +870,13 @@ function renderFechasEditables() {
         fechasEditables[fecha].forEach((partido, index) => {
             card.innerHTML += `
                     <div class="match flex justify-between items-center">
-                        <span class="text-sm md:text-base truncate">${partido.local}</span>
+                        <span class="text-sm md:text-base truncate">${partido.local.trim()}</span>
                         <input type="text" inputmode="numeric" pattern="[0-9]*" min="0" value="${partido.goles_local === "" ? "" : partido.goles_local}" 
                             onchange="updateResultado('${fecha}', ${index}, 'local', this.value)">
                         <span class="font-bold text-lg">-</span>
                         <input type="text" inputmode="numeric" pattern="[0-9]*" min="0" value="${partido.goles_visitante === "" ? "" : partido.goles_visitante}" 
                             onchange="updateResultado('${fecha}', ${index}, 'visitante', this.value)">
-                        <span class="text-sm md:text-base truncate">${partido.visitante}</span>
+                        <span class="text-sm md:text-base truncate">${partido.visitante.trim()}</span>
                     </div>`;
         });
         container.appendChild(card);
