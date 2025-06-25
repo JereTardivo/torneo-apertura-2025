@@ -167,6 +167,13 @@ input[type="text"][inputmode="numeric"] {
     vertical-align: middle;
 }
 
+.abreviado {
+    display: none;
+}
+.completo {
+    display: inline;
+}
+
 /* Ajustes para pantallas pequeñas */
 @media screen and (max-width: 600px) {
     /* Tipografía general */
@@ -242,6 +249,13 @@ input[type="text"][inputmode="numeric"] {
 
     .fecha-card td .font-bold.text-base {
     font-size: 18px !important;
-}
+    }
+
+ .abreviado {
+        display: inline !important;
+    }
+    .completo {
+        display: none !important;
+    }
 }
 
