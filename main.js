@@ -1347,38 +1347,38 @@ function ordenarTablaPorCriteriosAvanzados() {
 function ordenarGrupo(grupo, indiceCriterio = 0, historial = [], puestosResueltos = [], posicionInicial = 1) {
     const criterios = [
         {
-            nombre: "2.1: Mayor Puntaje entre sí",
-            codigo: "2.1",
+            nombre: "1: Mayor Puntaje entre sí",
+            codigo: "1",
             fn: equipo => sumarPuntosEntreGrupo(grupoRaiz, equipo)
         },
         {
-            nombre: "2.2: Mayor Puntaje contra top 7",
-            codigo: "2.2",
+            nombre: "2: Mayor Puntaje contra top 7",
+            codigo: "2",
             fn: equipo => {
                 const rivales = top7Definitivo.filter(e => !grupo.includes(e));
                 return obtenerPuntosContra(equipo, rivales);
             }
         },
         {
-            nombre: "2.3: Mayor Cantidad de Goles a favor entre sí",
-            codigo: "2.3",
+            nombre: "3: Mayor Cantidad de Goles a favor entre sí",
+            codigo: "3",
             fn: equipo => sumarGolesAFavorEntreGrupo(grupoRaiz, equipo)
         },
         {
-            nombre: "2.4: Menor Cantidad de Goles en contra entre sí",
-            codigo: "2.4",
+            nombre: "4: Menor Cantidad de Goles en contra entre sí",
+            codigo: "4",
             fn: equipo => sumarGolesEnContraEntreGrupo(grupoRaiz, equipo),
             ascendente: true
         },
         {
-            nombre: "2.5: Menor Cantidad de Goles en contra totales",
-            codigo: "2.5",
+            nombre: "5: Menor Cantidad de Goles en contra totales",
+            codigo: "5",
             fn: equipo => tablaPosiciones[equipo].GC,
             ascendente: true
         },
         {
-            nombre: "2.6: Mayor Cantidad de Goles a favor totales",
-            codigo: "2.6",
+            nombre: "6: Mayor Cantidad de Goles a favor totales",
+            codigo: "6",
             fn: equipo => tablaPosiciones[equipo].GF
         }
     ];
