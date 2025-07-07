@@ -8,8 +8,6 @@ function nombreAArchivo(nombre) {
         + ".png";
 }
 
-
-
 const fechasFijas = {
     "FECHA 1": [
         {
@@ -758,12 +756,7 @@ const fechasFijas = {
             "visitante": "ATL. INDEPENDIENTE",
             "goles_visitante": 1
         }
-    ]
-};
-
-const fechasEditables = {
-
-    "FECHA 16": [
+    ], "FECHA 16": [
         {
             "local": "SP. BELGRANO",
             "goles_local": "",
@@ -813,6 +806,11 @@ const fechasEditables = {
             "goles_visitante": ""
         }
     ]
+};
+
+const fechasEditables = {
+
+
 };
 
 const equipos = [
@@ -922,7 +920,6 @@ function actualizarInputVisible(fecha, index, equipo, valor) {
         }
     });
 }
-
 
 function renderFixture(filtroEquipo = "TODOS") {
 
@@ -1066,6 +1063,7 @@ function obtenerResultadosEntre(equipoA, equipoB) {
     const resultados = [];
 
     for (const fecha in todasFechas) {
+        // if (fecha === "FECHA 11") continue;
         todasFechas[fecha].forEach(p => {
             if ((p.local === equipoA && p.visitante === equipoB) || (p.local === equipoB && p.visitante === equipoA)) {
                 resultados.push({
@@ -1103,6 +1101,7 @@ function obtenerPuntosContra(equipo, rivales) {
     const todasFechas = { ...fechasFijas, ...fechasEditables };
 
     for (const fecha in todasFechas) {
+        //if (fecha === "FECHA 11") continue;
         todasFechas[fecha].forEach(p => {
             const gl = parseInt(p.goles_local);
             const gv = parseInt(p.goles_visitante);
@@ -1444,6 +1443,7 @@ function obtenerResultadosEntreGrupo(grupo) {
     const resultados = [];
 
     for (const fecha in todasFechas) {
+        //if (fecha === "FECHA 11") continue;
         todasFechas[fecha].forEach(p => {
             const gl = parseInt(p.goles_local);
             const gv = parseInt(p.goles_visitante);
