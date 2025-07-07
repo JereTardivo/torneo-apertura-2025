@@ -1594,22 +1594,22 @@ function renderExplicacionDesempate(equiposOrdenados) {
 
 function obtenerAbreviatura(nombre) {
     const map = {
-        "REC. ELENENSE": "C.D.R.E.",
-        "ATL. INDEPENDIENTE": "C.A.I.",
-        "ATL. ASCASUBI": "C.A.A.",
-        "VECINOS UNIDOS": "C.V.U.",
-        "JUVENTUD AGRARIO": "C.J.A.C.",
-        "NAUTICO RUMIPAL": "C.N.R.",
-        "DEPORTIVO ITALIANO": "D.I.S.R.",
-        "SP. BELGRANO": "C.S.B.",
-        "BELGRANO (BERROTARAN)": "B.F.C.",
-        "TALLERES (BERROTARAN)": "C.A.T.",
-        "9 DE JULIO (RIO TERCERO)": "C.S.9.J.",
-        "ATL. RIO TERCERO": "C.A.R.T.",
-        "ATL. ALMAFUERTE": "C.A.A.",
-        "ESTUDIANTES (HERNANDO)": "C.A.E.",
-        "VILLA GENERAL BELGRANO": "V.G.B.",
-        "DEP. INDEPENDIENTE": "C.D.I."
+        "REC. ELENENSE": "CDRE",
+        "ATL. INDEPENDIENTE": "CAI",
+        "ATL. ASCASUBI": "CAA",
+        "VECINOS UNIDOS": "CVU",
+        "JUVENTUD AGRARIO": "CJAC",
+        "NAUTICO RUMIPAL": "CNR",
+        "DEPORTIVO ITALIANO": "DISR",
+        "SP. BELGRANO": "CSB",
+        "BELGRANO (BERROTARAN)": "BFC",
+        "TALLERES (BERROTARAN)": "CAT",
+        "9 DE JULIO (RIO TERCERO)": "CS9J",
+        "ATL. RIO TERCERO": "CART",
+        "ATL. ALMAFUERTE": "CAA",
+        "ESTUDIANTES (HERNANDO)": "CAE",
+        "VILLA GENERAL BELGRANO": "VGB",
+        "DEP. INDEPENDIENTE": "CDI"
     };
 
     return map[nombre] || nombre;
