@@ -758,61 +758,61 @@ const fechasFijas = {
             "visitante": "ATL. INDEPENDIENTE",
             "goles_visitante": 1
         }
+    ], "FECHA 16": [
+        {
+            "local": "SP. BELGRANO",
+            "goles_local": 2,
+            "visitante": "ATL. ALMAFUERTE",
+            "goles_visitante": 1
+        },
+        {
+            "local": "ATL. INDEPENDIENTE",
+            "goles_local": 3,
+            "visitante": "VECINOS UNIDOS",
+            "goles_visitante": 0
+        },
+        {
+            "local": "ATL. RIO TERCERO",
+            "goles_local": 2,
+            "visitante": "JUVENTUD AGRARIO",
+            "goles_visitante": 2
+        },
+        {
+            "local": "DEPORTIVO ITALIANO",
+            "goles_local": 1,
+            "visitante": "TALLERES (BERROTARAN)",
+            "goles_visitante": 3
+        },
+        {
+            "local": "NAUTICO RUMIPAL",
+            "goles_local": 0,
+            "visitante": "REC. ELENENSE",
+            "goles_visitante": 0
+        },
+        {
+            "local": "BELGRANO (BERROTARAN)",
+            "goles_local": 0,
+            "visitante": "VILLA GENERAL BELGRANO",
+            "goles_visitante": 2
+        },
+        {
+            "local": "ATL. ASCASUBI",
+            "goles_local": 1,
+            "visitante": "9 DE JULIO (RIO TERCERO)",
+            "goles_visitante": 0
+        },
+        {
+            "local": "DEP. INDEPENDIENTE",
+            "goles_local": 1,
+            "visitante": "ESTUDIANTES (HERNANDO)",
+            "goles_visitante": 3
+        }
     ]
 };
 
 const fechasEditables = {
 
-    "FECHA 16": [
-        {
-            "local": "SP. BELGRANO",
-            "goles_local": "",
-            "visitante": "ATL. ALMAFUERTE",
-            "goles_visitante": ""
-        },
-        {
-            "local": "ATL. INDEPENDIENTE",
-            "goles_local": "",
-            "visitante": "VECINOS UNIDOS",
-            "goles_visitante": ""
-        },
-        {
-            "local": "ATL. RIO TERCERO",
-            "goles_local": "",
-            "visitante": "JUVENTUD AGRARIO",
-            "goles_visitante": ""
-        },
-        {
-            "local": "DEPORTIVO ITALIANO",
-            "goles_local": "",
-            "visitante": "TALLERES (BERROTARAN)",
-            "goles_visitante": ""
-        },
-        {
-            "local": "NAUTICO RUMIPAL",
-            "goles_local": "",
-            "visitante": "REC. ELENENSE",
-            "goles_visitante": ""
-        },
-        {
-            "local": "BELGRANO (BERROTARAN)",
-            "goles_local": "",
-            "visitante": "VILLA GENERAL BELGRANO",
-            "goles_visitante": ""
-        },
-        {
-            "local": "ATL. ASCASUBI",
-            "goles_local": "",
-            "visitante": "9 DE JULIO (RIO TERCERO)",
-            "goles_visitante": ""
-        },
-        {
-            "local": "DEP. INDEPENDIENTE",
-            "goles_local": "",
-            "visitante": "ESTUDIANTES (HERNANDO)",
-            "goles_visitante": ""
-        }
-    ]
+    
 };
 
 const equipos = [
