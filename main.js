@@ -756,62 +756,59 @@ const fechasFijas = {
             "visitante": "ATL. INDEPENDIENTE",
             "goles_visitante": 1
         }
-    ]
-};
-
-const fechasEditables = {
-
-    "FECHA 16": [
+    ], "FECHA 16": [
         {
             "local": "SP. BELGRANO",
-            "goles_local": "",
+            "goles_local": 2,
             "visitante": "ATL. ALMAFUERTE",
-            "goles_visitante": ""
+            "goles_visitante": 1
         },
         {
             "local": "ATL. INDEPENDIENTE",
-            "goles_local": "",
+            "goles_local": 3,
             "visitante": "VECINOS UNIDOS",
-            "goles_visitante": ""
+            "goles_visitante": 0
         },
         {
             "local": "ATL. RIO TERCERO",
-            "goles_local": "",
+            "goles_local": 2,
             "visitante": "JUVENTUD AGRARIO",
-            "goles_visitante": ""
+            "goles_visitante": 2
         },
         {
             "local": "DEPORTIVO ITALIANO",
-            "goles_local": "",
+            "goles_local": 1,
             "visitante": "TALLERES (BERROTARAN)",
-            "goles_visitante": ""
+            "goles_visitante": 3
         },
         {
             "local": "NAUTICO RUMIPAL",
-            "goles_local": "",
+            "goles_local": 0,
             "visitante": "REC. ELENENSE",
-            "goles_visitante": ""
+            "goles_visitante": 0
         },
         {
             "local": "BELGRANO (BERROTARAN)",
-            "goles_local": "",
+            "goles_local": 0,
             "visitante": "VILLA GENERAL BELGRANO",
-            "goles_visitante": ""
+            "goles_visitante": 2
         },
         {
             "local": "ATL. ASCASUBI",
-            "goles_local": "",
+            "goles_local": 1,
             "visitante": "9 DE JULIO (RIO TERCERO)",
-            "goles_visitante": ""
+            "goles_visitante": 0
         },
         {
             "local": "DEP. INDEPENDIENTE",
-            "goles_local": "",
+            "goles_local": 1,
             "visitante": "ESTUDIANTES (HERNANDO)",
-            "goles_visitante": ""
+            "goles_visitante": 3
         }
     ]
 };
+
+const fechasEditables = {};
 
 const equipos = [
     "9 DE JULIO (RIO TERCERO)",
@@ -1063,7 +1060,7 @@ function obtenerResultadosEntre(equipoA, equipoB) {
     const resultados = [];
 
     for (const fecha in todasFechas) {
-       // if (fecha === "FECHA 11") continue;
+        // if (fecha === "FECHA 11") continue;
         todasFechas[fecha].forEach(p => {
             if ((p.local === equipoA && p.visitante === equipoB) || (p.local === equipoB && p.visitante === equipoA)) {
                 resultados.push({
