@@ -756,7 +756,12 @@ const fechasFijas = {
             "visitante": "ATL. INDEPENDIENTE",
             "goles_visitante": 1
         }
-    ], "FECHA 16": [
+    ]
+};
+
+const fechasEditables = {
+
+    "FECHA 16": [
         {
             "local": "SP. BELGRANO",
             "goles_local": "",
@@ -806,11 +811,6 @@ const fechasFijas = {
             "goles_visitante": ""
         }
     ]
-};
-
-const fechasEditables = {
-
-
 };
 
 const equipos = [
@@ -1063,7 +1063,7 @@ function obtenerResultadosEntre(equipoA, equipoB) {
     const resultados = [];
 
     for (const fecha in todasFechas) {
-        // if (fecha === "FECHA 11") continue;
+       // if (fecha === "FECHA 11") continue;
         todasFechas[fecha].forEach(p => {
             if ((p.local === equipoA && p.visitante === equipoB) || (p.local === equipoB && p.visitante === equipoA)) {
                 resultados.push({
